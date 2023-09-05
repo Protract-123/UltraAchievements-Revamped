@@ -11,7 +11,7 @@ public abstract class Achievement
         }
     }
 
-    private void CompleteAchievement()
+    public void CompleteAchievement()
     {
         AchievementManager.MarkAchievementComplete(achInfo);
     }
