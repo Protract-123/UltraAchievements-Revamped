@@ -23,12 +23,18 @@
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
   </ItemGroup>
   
+  
+  <ItemGroup>
+    <Folder Include="lib\" />
+  </ItemGroup>
+  
+  
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\Mac ULTRAKILL\ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\Mac ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
