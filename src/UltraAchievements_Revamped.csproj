@@ -31,10 +31,10 @@
   
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
