@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Mono.CompilerServices.SymbolWriter;
 using UnityEngine;
 
 namespace UltraAchievements_Revamped;
@@ -9,7 +10,7 @@ namespace UltraAchievements_Revamped;
 public static class AchievementManager
 {
     public static readonly Dictionary<Type, AchievementInfo> TypeToAchInfo = new();
-    private static Dictionary<string, AchievementInfo> IdToAchInfo = new();
+    public static Dictionary<string, AchievementInfo> IdToAchInfo = new();
 
     public static void MarkAchievementComplete(AchievementInfo achInfo)
     {
@@ -17,12 +18,12 @@ public static class AchievementManager
     }
     
 
-    public static void RegisterAchievement<T>(T ach)
+    public static void RegisterAchievement(Type ach)
     {
-        string achId = typeof(T).GetCustomAttribute<RegisterAchievementAttribute>().id;
+        string achId = ach.GetCustomAttribute<RegisterAchievementAttribute>().id;
         if (IdToAchInfo.TryGetValue(achId, out var achInf))
         {
-            TypeToAchInfo.Add(typeof(T), achInf);
+            TypeToAchInfo.Add(ach, achInf);
         }
     }
     
@@ -53,5 +54,17 @@ public static class AchievementManager
         }
         
         return type.GetCustomAttribute<RegisterAchievementAttribute>() != null;
+    }
+    
+    public static AchievementInfo GetAchievementInfo(Type type)
+    {
+        TypeToAchInfo.TryGetValue(type, out var achInfo);
+        return achInfo;
+    }
+
+    public static AchievementInfo GetAchievementInfo(string id)
+    {
+        IdToAchInfo.TryGetValue(id, out var achInfo);
+        return achInfo;
     }
 }
