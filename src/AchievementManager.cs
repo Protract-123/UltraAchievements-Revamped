@@ -8,16 +8,16 @@ namespace UltraAchievements_Revamped;
 
 public static class AchievementManager
 {
-    public static Dictionary<Type, AchievementInfo> TypeToAchInfo = new Dictionary<Type, AchievementInfo>();
-    public static Dictionary<string, AchievementInfo> IdToAchInfo = new Dictionary<string, AchievementInfo>();
+    public static readonly Dictionary<Type, AchievementInfo> TypeToAchInfo = new();
+    private static Dictionary<string, AchievementInfo> IdToAchInfo = new();
 
     public static void MarkAchievementComplete(AchievementInfo achInfo)
     {
-        GameObject achHolder = new GameObject();
+        Debug.Log(achInfo.Name);
     }
     
 
-    public static void RegisterAchievement<T>(T ach) where T : Achievement
+    public static void RegisterAchievement<T>(T ach)
     {
         string achId = typeof(T).GetCustomAttribute<RegisterAchievementAttribute>().id;
         if (IdToAchInfo.TryGetValue(achId, out var achInf))
@@ -31,7 +31,7 @@ public static class AchievementManager
         IEnumerable<Type> achievements = asm.GetTypes().Where(IsPossibleAchievement);
         foreach (Type ach in achievements)
         {
-            RegisterAchievement<>(ach);
+            RegisterAchievement(ach);
         }
     }
 

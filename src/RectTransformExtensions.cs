@@ -3,7 +3,7 @@ namespace UltraAchievements_Revamped;
 using UnityEngine;
  
 public enum AnchorPresets
-    {
+{
     TopLeft,
     TopCenter,
     TopRight,
