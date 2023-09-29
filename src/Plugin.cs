@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using BepInEx;
+using HarmonyLib;
 using UnityEngine;
 using Logger = BepInEx.Logging.Logger;
 
@@ -12,7 +13,12 @@ public class Plugin : BaseUnityPlugin
 {
     private static AssetBundle ModBundle;
     public static string ModFolder => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        
+
+    private void Awake()
+    {
+        Harmony harmony = new Harmony("Protract.UltraAchievementsRevamped");
+        harmony.PatchAll();
+    }
 
     private void Start()
     {

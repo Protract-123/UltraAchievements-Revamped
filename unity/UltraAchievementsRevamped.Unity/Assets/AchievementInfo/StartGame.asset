@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: -228705970, guid: 1755382bcd4b74b0a946cad86e6f95ab, type: 3}
   m_Name: StartGame
   m_EditorClassIdentifier: 
-  Id: ultraAchievem
-  Name: 
+  Id: ultraAchievements.startgame
+  Name: Press Start to Play
   Icon: {fileID: 0}
-  Description: 
+  Description: temp
   HolderTemplate: {fileID: 0}
