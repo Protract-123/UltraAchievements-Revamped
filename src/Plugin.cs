@@ -1,10 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using UnityEngine;
-using Logger = BepInEx.Logging.Logger;
 
 namespace UltraAchievements_Revamped;
 

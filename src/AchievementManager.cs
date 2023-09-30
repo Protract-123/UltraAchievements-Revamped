@@ -2,21 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Mono.CompilerServices.SymbolWriter;
 using UnityEngine;
 
 namespace UltraAchievements_Revamped;
 
 public static class AchievementManager
 {
-    public static readonly Dictionary<Type, AchievementInfo> TypeToAchInfo = new();
-    public static Dictionary<string, AchievementInfo> IdToAchInfo = new();
+    private static readonly Dictionary<Type, AchievementInfo> TypeToAchInfo = new();
+    private static Dictionary<string, AchievementInfo> IdToAchInfo = new();
 
     public static void MarkAchievementComplete(AchievementInfo achInfo)
     {
+        if (achInfo.isCompleted) return;
+        
         Debug.Log(achInfo.Name);
+        achInfo.isCompleted = true;
+        GameObject achHolderGO = GameObject.Instantiate(achInfo.HolderTemplate);
+        AchievementHolder achHolder = achHolderGO.GetComponent<AchievementHolder>();
+        achHolder.Description.text = achInfo.Description;
+        achHolder.Title.text = achInfo.Name;
+        achHolder.Icon.sprite = achInfo.Icon;
+        achHolderGO.AddComponent<AchievementBehaviour>();
     }
-    
+
 
     public static void RegisterAchievement(Type ach)
     {

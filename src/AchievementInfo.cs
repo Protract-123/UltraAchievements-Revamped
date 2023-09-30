@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UltraAchievements_Revamped;
 
@@ -10,4 +9,5 @@ public class AchievementInfo : ScriptableObject
     public Sprite Icon;
     [TextArea] public string Description;
     public GameObject HolderTemplate;
+    [HideInInspector] public bool isCompleted;
 }
