@@ -3,6 +3,7 @@ using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UltraAchievements_Revamped;
 
@@ -10,7 +11,7 @@ namespace UltraAchievements_Revamped;
 public class Plugin : BaseUnityPlugin
 {
     private static AssetBundle ModBundle;
-    public static string ModFolder => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+    private static string ModFolder => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
     private void Awake()
     {
@@ -25,4 +26,6 @@ public class Plugin : BaseUnityPlugin
         AchievementManager.RegisterAchievementInfos(allInfos);
         AchievementManager.RegisterAllAchievements(typeof(Plugin).Assembly);
     }
+    
+
 }

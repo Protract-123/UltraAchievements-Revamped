@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: ultraAchievements.startgame
   Name: Press Start to Play
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 7f2223e71ee584c989e15f35f08b20af, type: 3}
   Description: temp
-  HolderTemplate: {fileID: 0}
+  HolderTemplate: {fileID: 1585130959404246450, guid: 012a0d884cac64eae8fe85aca3308f0d,
+    type: 3}
+  isCompleted: 0

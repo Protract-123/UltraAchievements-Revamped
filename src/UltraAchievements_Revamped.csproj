@@ -33,6 +33,9 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>

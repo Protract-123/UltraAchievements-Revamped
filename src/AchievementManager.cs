@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UltraAchievements_Revamped;
 
@@ -10,17 +12,20 @@ public static class AchievementManager
 {
     private static readonly Dictionary<Type, AchievementInfo> TypeToAchInfo = new();
     private static Dictionary<string, AchievementInfo> IdToAchInfo = new();
+    
 
     public static void MarkAchievementComplete(AchievementInfo achInfo)
     {
         if (achInfo.isCompleted) return;
-        
-        Debug.Log(achInfo.Name);
+
         achInfo.isCompleted = true;
         GameObject achHolderGO = GameObject.Instantiate(achInfo.HolderTemplate);
+        achHolderGO.transform.SetParent(CreateOverlay().transform);
+        
         AchievementHolder achHolder = achHolderGO.GetComponent<AchievementHolder>();
-        achHolder.Description.text = achInfo.Description;
-        achHolder.Title.text = achInfo.Name;
+        
+        achHolder.Description.GetComponent<Text>().text = achInfo.Description;
+        achHolder.Title.GetComponent<Text>().text = achInfo.Name;
         achHolder.Icon.sprite = achInfo.Icon;
         achHolderGO.AddComponent<AchievementBehaviour>();
     }
@@ -74,5 +79,21 @@ public static class AchievementManager
     {
         IdToAchInfo.TryGetValue(id, out var achInfo);
         return achInfo;
+    }
+    
+    private static GameObject CreateOverlay()
+    {
+        GameObject blank = new GameObject();
+        blank.name = "Achievement Overlay";
+        blank.AddComponent<Canvas>();
+        blank.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+        blank.GetComponent<Canvas>().sortingOrder = 1000;
+        blank.AddComponent<CanvasScaler>();
+        blank.AddComponent<GraphicRaycaster>();
+        blank.GetComponent<CanvasScaler>().screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+        blank.GetComponent<CanvasScaler>().matchWidthOrHeight = 0f;
+        blank.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920,1080);
+        GameObject.DontDestroyOnLoad(blank);
+        return blank;
     }
 }

@@ -40,8 +40,8 @@ public class AchievementBehaviour : MonoBehaviour
             rect.anchoredPosition = new Vector2(Mathf.Lerp(0f, 400f, animTimer), 0);
             if (endTimer >= 5)
             {
-                endTimerStarted = false;
-                Destroy(this.gameObject);
+                endTimerStarted = false; 
+                Destroy(this.transform.parent.gameObject);
             }
         }
     }
