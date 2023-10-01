@@ -14,7 +14,7 @@ public class AchievementBehaviour : MonoBehaviour
     private void Start()    
     {
         rect = GetComponent<RectTransform>();
-        rect.anchoredPosition = new Vector2(400,0);
+        rect.anchoredPosition = new Vector2(1150f,-445f);
         startTimerStarted = true;
     }
     private void Update()
@@ -24,7 +24,7 @@ public class AchievementBehaviour : MonoBehaviour
             startTimer += Time.deltaTime;
             animTimer += Time.deltaTime * 1.35f;
             if (animTimer >= 1) animTimer = 1;
-            rect.anchoredPosition = new Vector2(Mathf.Lerp(400f, 0f, animTimer),0);
+            rect.anchoredPosition = new Vector2(Mathf.Lerp(1150f, 780f, animTimer),-445f);
             if(startTimer >= 5)
             {
                 animTimer = 0;
@@ -37,11 +37,10 @@ public class AchievementBehaviour : MonoBehaviour
             endTimer += Time.deltaTime;
             animTimer += Time.deltaTime * 1.35f;
             if (animTimer >= 1) animTimer = 1;
-            rect.anchoredPosition = new Vector2(Mathf.Lerp(0f, 400f, animTimer), 0);
+            rect.anchoredPosition = new Vector2(Mathf.Lerp(780f, 1150f, animTimer), -445f);
             if (endTimer >= 5)
             {
                 endTimerStarted = false; 
-                Destroy(this.transform.parent.gameObject);
             }
         }
     }

@@ -7,6 +7,6 @@ namespace UltraAchievements_Revamped;
 public class AchievementHolder : MonoBehaviour
 {
     public Text Title;
-    public SpriteRenderer Icon;
+    public Image Icon;
     public Text Description;
 }

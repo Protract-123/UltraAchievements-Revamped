@@ -90,6 +90,7 @@ public static class AchievementManager
         blank.GetComponent<Canvas>().sortingOrder = 1000;
         blank.AddComponent<CanvasScaler>();
         blank.AddComponent<GraphicRaycaster>();
+        blank.GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         blank.GetComponent<CanvasScaler>().screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
         blank.GetComponent<CanvasScaler>().matchWidthOrHeight = 0f;
         blank.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920,1080);
