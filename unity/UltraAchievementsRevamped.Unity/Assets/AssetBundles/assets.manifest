@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2451422525
+CRC: 2414122561
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 844491437da8817166555997ab005f9b
+    Hash: 4727ce61c632ed382844ad4bc1d970ec
   TypeTreeHash:
     serializedVersion: 2
-    Hash: d973bb41344835d69cfee1c59bd36d14
+    Hash: 4ba0bc920ee4a951586ff31f2a695624
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -18,9 +18,9 @@ ClassTypes:
 - Class: 48
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 114
   Script: {fileID: 1499942743, guid: 1755382bcd4b74b0a946cad86e6f95ab, type: 3}
 - Class: 114
@@ -41,4 +41,5 @@ Assets:
 - Assets/AchievementInfo/StartGame.asset
 - Assets/Sprites/Icons/PressStartToPlay.png
 - Assets/AchievementHolder/Default Holder.prefab
+- Assets/Sprites/DefaultSpriteUpscaled.png
 Dependencies: []
