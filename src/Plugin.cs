@@ -25,6 +25,7 @@ public class Plugin : BaseUnityPlugin
         AchievementInfo[] allInfos = ModBundle.LoadAllAssets<AchievementInfo>();
         AchievementManager.RegisterAchievementInfos(allInfos);
         AchievementManager.RegisterAllAchievements(typeof(Plugin).Assembly);
+        Debug.Log(Application.persistentDataPath);
     }
     
 

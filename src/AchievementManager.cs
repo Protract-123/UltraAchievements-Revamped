@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using TMPro;
@@ -11,14 +12,34 @@ namespace UltraAchievements_Revamped;
 public static class AchievementManager
 {
     private static readonly Dictionary<Type, AchievementInfo> TypeToAchInfo = new();
-    private static Dictionary<string, AchievementInfo> IdToAchInfo = new();
-    
+    private static readonly Dictionary<string, AchievementInfo> IdToAchInfo = new();
+    private static readonly string SavePath = Path.Combine(Application.persistentDataPath, "achList.txt");
+
+    private static string[] allLines
+    {
+        get
+        {
+            if (File.Exists(SavePath))
+            {
+                return File.ReadAllLines(SavePath);
+            }
+
+            File.Create(SavePath);
+            return Array.Empty<string>();
+        }
+    }
+
 
     public static void MarkAchievementComplete(AchievementInfo achInfo)
     {
         if (achInfo.isCompleted) return;
 
         achInfo.isCompleted = true;
+        if (IdToAchInfo.TryGetValue(achInfo.Id, out var info))
+        {
+            info.isCompleted = true;
+        }
+        
         GameObject achHolderGO = GameObject.Instantiate(achInfo.HolderTemplate);
         achHolderGO.transform.SetParent(CreateOverlay().transform);
         
@@ -28,8 +49,25 @@ public static class AchievementManager
         achHolder.Title.GetComponent<Text>().text = achInfo.Name;
         achHolder.Icon.sprite = achInfo.Icon;
         achHolderGO.AddComponent<AchievementBehaviour>();
+        SaveToFile(achInfo);
     }
 
+    private static void SaveToFile(AchievementInfo achInfo)
+    {
+        if (!File.Exists(SavePath))
+        {
+            File.Create(SavePath);
+            using var sw = new StreamWriter(SavePath);
+            sw.WriteLine($"{achInfo.Id}");
+            sw.Close();
+        }
+        else if (File.Exists(SavePath))
+        {
+            using var sw = new StreamWriter(SavePath, true);
+            sw.WriteLine($"{achInfo.Id}");
+            sw.Close();
+        }
+    }
 
     public static void RegisterAchievement(Type ach)
     {
@@ -53,6 +91,13 @@ public static class AchievementManager
     {
         foreach (AchievementInfo info in infos)
         {
+            foreach (string line in allLines)
+            {
+                if (info.Id == line)
+                {
+                    info.isCompleted = true;
+                }
+            }
             IdToAchInfo.Add(info.Id, info);
         }
     }
