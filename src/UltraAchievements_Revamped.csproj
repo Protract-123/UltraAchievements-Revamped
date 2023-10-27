@@ -28,6 +28,12 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Addressables">
+      <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Unity.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Unity.ResourceManager.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Unity.TextMeshPro.dll</HintPath>
     </Reference>

@@ -3,6 +3,7 @@ using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 namespace UltraAchievements_Revamped;
@@ -12,6 +13,7 @@ public class Plugin : BaseUnityPlugin
 {
     private static AssetBundle ModBundle;
     private static string ModFolder => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+    internal static GameObject TerminalTemplate;
 
     private void Awake()
     {
@@ -25,7 +27,8 @@ public class Plugin : BaseUnityPlugin
         AchievementInfo[] allInfos = ModBundle.LoadAllAssets<AchievementInfo>();
         AchievementManager.RegisterAchievementInfos(allInfos);
         AchievementManager.RegisterAllAchievements(typeof(Plugin).Assembly);
-        Debug.Log(Application.persistentDataPath);
+        TerminalTemplate = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/Sandbox/Sandbox Shop.prefab")
+            .WaitForCompletion();
     }
     
 
