@@ -9,6 +9,10 @@
     <LangVersion>latest</LangVersion>
     <RootNamespace>UltraAchievements-Revamped</RootNamespace>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <UltrakillPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL</UltrakillPath>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="BepInEx.Analyzers" Version="1.0.8">
@@ -26,19 +30,19 @@
   
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>$(UltrakillPath)\ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Addressables">
-      <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Unity.Addressables.dll</HintPath>
+      <HintPath>$(UltrakillPath)\ULTRAKILL_Data\Managed\Unity.Addressables.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ResourceManager">
-      <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Unity.ResourceManager.dll</HintPath>
+      <HintPath>$(UltrakillPath)\ULTRAKILL_Data\Managed\Unity.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>$(UltrakillPath)\ULTRAKILL_Data\Managed\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\Ultrakill\Mac Ultrakill\ULTRAKILL_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>$(UltrakillPath)\ULTRAKILL_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   
