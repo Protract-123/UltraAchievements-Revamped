@@ -12,8 +12,10 @@ namespace UltraAchievements_Revamped;
 public static class AchievementManager
 {
     private static readonly Dictionary<Type, AchievementInfo> TypeToAchInfo = new();
-    private static readonly Dictionary<string, AchievementInfo> IdToAchInfo = new();
+    public static readonly Dictionary<string, AchievementInfo> IdToAchInfo = new();
     private static readonly string SavePath = Path.Combine(Application.persistentDataPath, "achList.txt");
+    
+    public static AchievementInfo currentInfo;
 
     private static string[] allLines
     {
@@ -28,6 +30,7 @@ public static class AchievementManager
             return Array.Empty<string>();
         }
     }
+    
 
 
     public static void MarkAchievementComplete(AchievementInfo achInfo)

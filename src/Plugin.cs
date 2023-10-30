@@ -13,7 +13,8 @@ public class Plugin : BaseUnityPlugin
 {
     private static AssetBundle ModBundle;
     private static string ModFolder => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-    internal static GameObject TerminalTemplate;
+    internal static Sprite questionMark;
+    public static GameObject TerminalTemplate;
 
     private void Awake()
     {
@@ -24,10 +25,14 @@ public class Plugin : BaseUnityPlugin
     private void Start()
     {
         ModBundle = AssetBundle.LoadFromFile(Path.Combine(ModFolder, "assets"));
+        TerminalTemplate = ModBundle.LoadAsset<GameObject>("Achievements Terminal.prefab");
         AchievementInfo[] allInfos = ModBundle.LoadAllAssets<AchievementInfo>();
+        ModBundle.LoadAllAssets();
+        
         AchievementManager.RegisterAchievementInfos(allInfos);
         AchievementManager.RegisterAllAchievements(typeof(Plugin).Assembly);
-        TerminalTemplate = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/Sandbox/Sandbox Shop.prefab")
+        
+        questionMark = Addressables.LoadAssetAsync<Sprite>("Assets/Textures/UI/questionMark.png")
             .WaitForCompletion();
     }
     
