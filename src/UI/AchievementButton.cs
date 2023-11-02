@@ -1,18 +1,23 @@
 using HarmonyLib;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace UltraAchievements_Revamped.UI;
 
 
-public class AchievementButton : ShopButton
+public class AchievementButton : MonoBehaviour
 {
     public AchievementInfo info;
 }
 
-[HarmonyPatch(typeof(AchievementButton), "OnPointerClick")]
-public static class AchievementButtonPatch
+[HarmonyPatch(typeof(ShopButton), "OnPointerClick")]
+public static class ShopButtonPatch
 {
-    public static void Prefix(AchievementButton __instance)
+    public static void Prefix(ShopButton __instance)
     {
-        AchievementManager.currentInfo = __instance.info;
+        if(__instance.TryGetComponent<AchievementButton>(out var button))
+        {
+            AchievementManager.currentInfo = button.info;
+        }
     }
 }

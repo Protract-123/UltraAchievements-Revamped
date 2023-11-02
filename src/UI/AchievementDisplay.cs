@@ -14,7 +14,7 @@ public class AchievementDisplay : MonoBehaviour
     private void OnEnable()
     {
         Icon.sprite = AchievementManager.currentInfo.Icon;
-        Description.GetComponent<TextMeshPro>().text = AchievementManager.currentInfo.Description;
-        Description.GetComponent<TextMeshPro>().text = AchievementManager.currentInfo.Name;
+        Description.GetComponent<Text>().text = AchievementManager.currentInfo.Description;
+        Title.GetComponent<Text>().text = AchievementManager.currentInfo.Name;
     }
 }

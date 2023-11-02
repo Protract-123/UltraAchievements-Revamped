@@ -13,17 +13,17 @@ public class AchievementUIGenerator : MonoBehaviour
         foreach (AchievementInfo info in AchievementManager.IdToAchInfo.Values)
         {
             GameObject instance = Instantiate(Template, this.transform);
+            ShopButton button = instance.GetComponentInChildren<ShopButton>();
+            instance.SetActive(true);
             if (!info.isCompleted)
             {
                 instance.transform.GetChild(1).GetComponent<Image>().sprite = Plugin.questionMark;
-                instance.AddComponent<AchievementButton>().deactivated = true;
-                Destroy(Template);
-                return;
+                button.failure = true;
+                
+                break;
             }
-            
             instance.transform.GetChild(1).GetComponent<Image>().sprite = info.Icon;
-            instance.AddComponent<AchievementButton>().info = info;
-            Destroy(Template);
+            button.gameObject.AddComponent<AchievementButton>().info = info;
         }
     }
 }

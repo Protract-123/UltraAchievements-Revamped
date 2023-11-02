@@ -35,6 +35,14 @@ public class Plugin : BaseUnityPlugin
         questionMark = Addressables.LoadAssetAsync<Sprite>("Assets/Textures/UI/questionMark.png")
             .WaitForCompletion();
     }
-    
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            GameObject term =Instantiate(TerminalTemplate, NewMovement.Instance.transform.position + new Vector3(0, 10, 0),
+                Quaternion.identity);
+            term.transform.rotation = new Quaternion(180, 0, 0, 0);
+        }
+    }
 }
