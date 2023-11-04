@@ -15,15 +15,15 @@ public class AchievementUIGenerator : MonoBehaviour
             GameObject instance = Instantiate(Template, this.transform);
             ShopButton button = instance.GetComponentInChildren<ShopButton>();
             instance.SetActive(true);
+
+            instance.transform.GetChild(1).GetComponent<Image>().sprite = info.Icon;
+            button.gameObject.AddComponent<AchievementButton>().info = info;
+            
             if (!info.isCompleted)
             {
                 instance.transform.GetChild(1).GetComponent<Image>().sprite = Plugin.questionMark;
                 button.failure = true;
-                
-                break;
             }
-            instance.transform.GetChild(1).GetComponent<Image>().sprite = info.Icon;
-            button.gameObject.AddComponent<AchievementButton>().info = info;
         }
     }
 }
