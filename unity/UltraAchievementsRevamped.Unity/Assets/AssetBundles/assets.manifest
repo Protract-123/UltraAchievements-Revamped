@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1626447107
+CRC: 1811354569
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2a7633ab7bb031bca6b696b18cee72a4
+    Hash: d2807b2fc03c6f8f3cac9dcbe95da812
   TypeTreeHash:
     serializedVersion: 2
     Hash: 87a707142ea61f8af333297497318804
@@ -96,8 +96,10 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Mod Assets/Sprites/DefaultHolderSprite.png
-- Assets/Mod Assets/AchievementInfo/PressStart.asset
+- Assets/Mod Assets/AchievementInfo/StartGame.asset
 - Assets/Mod Assets/Sprites/Icons/Catapulted.png
+- Assets/Mod Assets/Sprites/Icons/DeleteSave.png
+- Assets/Mod Assets/AchievementInfo/Speed125.asset
 - Assets/Mod Assets/Sprites/Icons/PressStartToPlay.png
 - Assets/Mod Assets/AchievementHolder/Default Holder.prefab
 - Assets/Mod Assets/AchievementInfo/Chargeback.asset
@@ -105,6 +107,8 @@ Assets:
 - Assets/Mod Assets/Sprites/Icons/Chargeback.png
 - Assets/Mod Assets/AchievementInfo/Compressed.asset
 - Assets/Mod Assets/AchievementInfo/Catapulted.asset
+- Assets/Mod Assets/Sprites/Icons/Speeding125.png
 - Assets/Mod Assets/Sprites/DefaultSpriteUpscaled.png
+- Assets/Mod Assets/AchievementInfo/DeleteSave.asset
 - Assets/Mod Assets/Achievements Terminal.prefab
 Dependencies: []
