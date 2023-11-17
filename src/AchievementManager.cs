@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +34,7 @@ public static class AchievementManager
 
     public static void MarkAchievementComplete(AchievementInfo achInfo)
     {
+        if(achInfo == null) return;
         if (achInfo.isCompleted) return;
 
         achInfo.isCompleted = true;
@@ -53,6 +53,7 @@ public static class AchievementManager
         achHolder.Icon.sprite = achInfo.Icon;
         achHolderGO.AddComponent<AchievementBehaviour>();
         SaveToFile(achInfo);
+        
     }
 
     private static void SaveToFile(AchievementInfo achInfo)
