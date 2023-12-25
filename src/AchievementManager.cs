@@ -34,7 +34,12 @@ public static class AchievementManager
 
     public static void MarkAchievementComplete(AchievementInfo achInfo)
     {
-        if(achInfo == null) return;
+        if (achInfo == null)
+        {
+            GameConsole.Console.Instance.PrintLine($"Achievement does not exist, please check that the id matches");
+            return;
+        }
+
         if (achInfo.isCompleted) return;
 
         achInfo.isCompleted = true;

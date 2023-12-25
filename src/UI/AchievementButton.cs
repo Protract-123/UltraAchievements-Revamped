@@ -1,6 +1,5 @@
 using HarmonyLib;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace UltraAchievements_Revamped.UI;
 

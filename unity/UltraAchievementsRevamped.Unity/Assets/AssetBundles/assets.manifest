@@ -1,0 +1,136 @@
+ManifestFileVersion: 0
+CRC: 1725271315
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: eebfcd00f6f2dd17edbaa6be28a973de
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ae29180ab45fcd75d3c5a86f7b84cd9b
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2561b8c02d38d884ca20076f798adee4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0216b7f061c427948a1a1c273a689a62, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ebc7f2d30648aed44a1281ca9533bf5d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c430053810d8d1048bc4d7fb17338dec, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f15e58a9eee1d66499a53391bb85da69, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 69fbd00be8d904b3da640e502905c345, type: 3}
+- Class: 114
+  Script: {fileID: 853841158, guid: 1755382bcd4b74b0a946cad86e6f95ab, type: 3}
+- Class: 114
+  Script: {fileID: 1499942743, guid: 1755382bcd4b74b0a946cad86e6f95ab, type: 3}
+- Class: 114
+  Script: {fileID: -228705970, guid: 1755382bcd4b74b0a946cad86e6f95ab, type: 3}
+- Class: 114
+  Script: {fileID: 793158973, guid: 1755382bcd4b74b0a946cad86e6f95ab, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: faee0d7e686092e48b092e54203a8f7f, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 241
+  Script: {instanceID: 0}
+- Class: 243
+  Script: {instanceID: 0}
+- Class: 245
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Mod Assets/Sprites/Icons/PipeClip.png
+- Assets/Mod Assets/AchievementInfo/Fish Kill.asset
+- Assets/Mod Assets/AchievementInfo/MinotaurSky.asset
+- Assets/Mod Assets/Sprites/DefaultHolderSprite.png
+- Assets/Mod Assets/AchievementInfo/StartGame.asset
+- Assets/Mod Assets/AchievementInfo/MindflayerQuickKill.asset
+- Assets/Mod Assets/Sprites/Icons/MinotaurSky.png
+- Assets/Mod Assets/Sprites/Icons/Catapulted.png
+- Assets/Mod Assets/Sprites/Icons/DeathSimulator.png
+- Assets/Mod Assets/Sprites/Icons/V2IntroKill.png
+- Assets/Mod Assets/Sprites/Icons/DeleteSave.png
+- Assets/Mod Assets/Sprites/Icons/All-P-Ranks.png
+- Assets/Mod Assets/AchievementInfo/OneInMillion.asset
+- Assets/Mod Assets/AchievementInfo/Speed125.asset
+- Assets/Mod Assets/Sprites/Icons/PressStartToPlay.png
+- Assets/Mod Assets/Sprites/Icons/KillFish.png
+- Assets/Mod Assets/Sprites/Icons/Florp.png
+- Assets/Mod Assets/AchievementHolder/Default Holder.prefab
+- Assets/Mod Assets/Sprites/Icons/OneinMillion.png
+- Assets/Mod Assets/AchievementInfo/V2Kill.asset
+- Assets/Mod Assets/AchievementInfo/Chargeback.asset
+- Assets/Mod Assets/Sprites/Icons/Compressed.png
+- Assets/Mod Assets/Sprites/Icons/Chargeback.png
+- Assets/Mod Assets/AchievementInfo/Compressed.asset
+- Assets/Mod Assets/AchievementInfo/Catapulted.asset
+- Assets/Mod Assets/Sprites/Icons/CerbDoubleKill.png
+- Assets/Mod Assets/AchievementInfo/Pipe Clip.asset
+- Assets/Mod Assets/AchievementInfo/All P Ranks.asset
+- Assets/Mod Assets/Sprites/Icons/Speeding125.png
+- Assets/Mod Assets/Sprites/Icons/MindflayerQuickKill.png
+- Assets/Mod Assets/AchievementInfo/DeathSimulator.asset
+- Assets/Mod Assets/AchievementInfo/Florp.asset
+- Assets/Mod Assets/AchievementInfo/CerbKill.asset
+- Assets/Mod Assets/Sprites/DefaultSpriteUpscaled.png
+- Assets/Mod Assets/AchievementInfo/DeleteSave.asset
+- Assets/Mod Assets/Achievements Terminal.prefab
+Dependencies: []

@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -228705970, guid: 1755382bcd4b74b0a946cad86e6f95ab, type: 3}
-  m_Name: V2Kill
+  m_Name: All P Ranks
   m_EditorClassIdentifier: 
-  Id: ultraAchievements.v2kill
-  Name: GoPro Died
-  Icon: {fileID: 21300000, guid: 7775729489801444eb650b0d52e387c2, type: 3}
-  Description: Why did you do that, to my favorite gopro
+  Id: ultraAchievements.allprank
+  Name: You Killed Everyone
+  Icon: {fileID: 21300000, guid: 245ed995e1052374ca9b5b20d1bd1940, type: 3}
+  Description: You got every P rank in the game, whats next? V-Ranks, more mods,
+    more video games, what could every satisfy you?
   HolderTemplate: {fileID: 4741001321722607388, guid: 012a0d884cac64eae8fe85aca3308f0d,
     type: 3}
   isCompleted: 0

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -228705970, guid: 1755382bcd4b74b0a946cad86e6f95ab, type: 3}
-  m_Name: V2Kill
+  m_Name: Florp
   m_EditorClassIdentifier: 
-  Id: ultraAchievements.v2kill
-  Name: GoPro Died
-  Icon: {fileID: 21300000, guid: 7775729489801444eb650b0d52e387c2, type: 3}
-  Description: Why did you do that, to my favorite gopro
+  Id: ultraAchievements.florp
+  Name: Florp
+  Icon: {fileID: 21300000, guid: aeefb918b1007a6419f6085f8041e29d, type: 3}
+  Description: Florp
   HolderTemplate: {fileID: 4741001321722607388, guid: 012a0d884cac64eae8fe85aca3308f0d,
     type: 3}
   isCompleted: 0

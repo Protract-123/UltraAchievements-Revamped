@@ -2,9 +2,10 @@
 using System.Reflection;
 using BepInEx;
 using HarmonyLib;
+using UltraAchievements_Revamped.Achievements;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace UltraAchievements_Revamped;
 
@@ -34,15 +35,26 @@ public class Plugin : BaseUnityPlugin
         
         questionMark = Addressables.LoadAssetAsync<Sprite>("Assets/Textures/UI/questionMark.png")
             .WaitForCompletion();
+
+        SceneManager.activeSceneChanged += OnSceneChange;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            GameObject term =Instantiate(TerminalTemplate, NewMovement.Instance.transform.position + new Vector3(0, 10, 0),
+            GameObject term = Instantiate(TerminalTemplate, NewMovement.Instance.transform.position + new Vector3(0, 10, 0),
                 Quaternion.identity);
             term.transform.rotation = new Quaternion(180, 0, 0, 0);
+            
+            AllPRanks.CheckRanks();
         }
+        OneinMillion.Check();
+        Florp.FlorpCheck();
+    }
+
+    private void OnSceneChange(Scene current, Scene next)
+    {
+        AllPRanks.CheckRanks();
     }
 }
