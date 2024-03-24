@@ -36,7 +36,7 @@ public static class AchievementManager
     {
         if (achInfo == null)
         {
-            GameConsole.Console.Instance.PrintLine($"Achievement does not exist, please check that the id matches");
+            GameConsole.Console.Instance.ProcessInput($"Achievement does not exist, please check that the id matches");
             return;
         }
 
@@ -134,6 +134,7 @@ public static class AchievementManager
         IdToAchInfo.TryGetValue(id, out var achInfo);
         return achInfo;
     }
+    
     
     private static GameObject CreateOverlay()
     {

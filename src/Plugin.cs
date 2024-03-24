@@ -41,14 +41,6 @@ public class Plugin : BaseUnityPlugin
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            GameObject term = Instantiate(TerminalTemplate, NewMovement.Instance.transform.position + new Vector3(0, 10, 0),
-                Quaternion.identity);
-            term.transform.rotation = new Quaternion(180, 0, 0, 0);
-            
-            AllPRanks.CheckRanks();
-        }
         OneinMillion.Check();
         Florp.FlorpCheck();
     }
@@ -56,5 +48,14 @@ public class Plugin : BaseUnityPlugin
     private void OnSceneChange(Scene current, Scene next)
     {
         AllPRanks.CheckRanks();
+
+        GameObject firstRoom = FindObjectOfType<FirstRoomPrefab>().transform.GetChild(0).gameObject;
+
+        if (firstRoom != null)
+        {
+            GameObject term = Instantiate(TerminalTemplate, firstRoom.transform);
+            term.transform.localPosition = new Vector3(10, 2, 32);
+            term.transform.rotation = new Quaternion(0, 0, 0, 0);
+        }
     }
 }
