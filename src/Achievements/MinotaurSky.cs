@@ -7,7 +7,7 @@ namespace UltraAchievements_Revamped.Achievements;
 [HarmonyPatch(typeof(Minotaur), "Start")]
 public class MinotaurSky
 {
-    private static List<int> levels = [16,17,18,19];
+    private static List<int> levels = [13];
     [HarmonyPrefix]
     public static void LevelCheck()
     {

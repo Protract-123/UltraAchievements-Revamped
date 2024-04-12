@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MinotaurSky
   m_EditorClassIdentifier: 
   Id: ultraAchievements.minotaursky
-  Name: Asterius sees the Sky
-  Icon: {fileID: 21300000, guid: b1986a73139fd4a4c89ccb954b7b3ebf, type: 3}
-  Description: May he rest in peace
+  Name: Meet Your Maker
+  Icon: {fileID: 21300000, guid: 25b8790870a28834f8cb755e8da37276, type: 3}
+  Description: Son meets Father. Son literally explodes lmao.
   HolderTemplate: {fileID: 4741001321722607388, guid: 012a0d884cac64eae8fe85aca3308f0d,
     type: 3}
   isCompleted: 0

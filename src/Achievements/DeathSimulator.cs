@@ -11,7 +11,7 @@ public class DeathSimulator
     public static void DeathPatch()
     {
         Deaths++;
-        if (Deaths >= 20)
+        if (Deaths >= 100)
         {
             AchievementManager.MarkAchievementComplete(AchievementManager.GetAchievementInfo(typeof(DeathSimulator)));
         }
