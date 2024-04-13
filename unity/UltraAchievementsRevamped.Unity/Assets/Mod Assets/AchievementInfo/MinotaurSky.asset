@@ -18,4 +18,6 @@ MonoBehaviour:
   Description: Son meets Father. Son literally explodes lmao.
   HolderTemplate: {fileID: 4741001321722607388, guid: 012a0d884cac64eae8fe85aca3308f0d,
     type: 3}
+  isHidden: 1
+  isProgressive: 0
   isCompleted: 0

@@ -9,5 +9,7 @@ public class AchievementInfo : ScriptableObject
     public Sprite Icon;
     [TextArea] public string Description;
     public GameObject HolderTemplate;
+    public bool isHidden;
+    public bool isProgressive;
     [HideInInspector] public bool isCompleted;
 }
