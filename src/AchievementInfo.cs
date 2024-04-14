@@ -11,5 +11,8 @@ public class AchievementInfo : ScriptableObject
     public GameObject HolderTemplate;
     public bool isHidden;
     public bool isProgressive;
+    public int MaxProgress;
+    
     [HideInInspector] public bool isCompleted;
+    [HideInInspector] public int progress;
 }

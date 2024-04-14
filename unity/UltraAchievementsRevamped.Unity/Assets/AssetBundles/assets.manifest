@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 846680203
+CRC: 2156951303
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e1c1a690fa0f8a8e038c464901995de2
+    Hash: e47a0e2358956cfeb10ffb129bd144bf
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 69e9e6926bb0eab83ee761d2a1fea4e5
+    Hash: c3734824e3f78f51bd90b7ce241ff75c
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -108,6 +108,7 @@ Assets:
 - Assets/Mod Assets/Sprites/Icons/DeathSimulator.png
 - Assets/Mod Assets/Sprites/Icons/V2IntroKill.png
 - Assets/Mod Assets/Sprites/Icons/DeleteSave.png
+- Assets/Mod Assets/AchievementInfo/ProgTest.asset
 - Assets/Mod Assets/Sprites/Icons/All-P-Ranks.png
 - Assets/Mod Assets/AchievementInfo/OneInMillion.asset
 - Assets/Mod Assets/AchievementInfo/Speed125.asset

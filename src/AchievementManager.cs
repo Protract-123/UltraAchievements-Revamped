@@ -12,24 +12,36 @@ public static class AchievementManager
 {
     private static readonly Dictionary<Type, AchievementInfo> TypeToAchInfo = new();
     public static readonly Dictionary<string, AchievementInfo> IdToAchInfo = new();
-    private static readonly string SavePath = Path.Combine(Application.persistentDataPath, "achList.txt");
     
     public static AchievementInfo currentInfo;
 
-    private static string[] allLines
+    private static string[] allSaveLines
     {
         get
         {
-            if (File.Exists(SavePath))
+            if (File.Exists(Plugin.SavePath))
             {
-                return File.ReadAllLines(SavePath);
+                return File.ReadAllLines(Plugin.SavePath);
             }
 
-            File.Create(SavePath);
+            File.Create(Plugin.SavePath);
             return Array.Empty<string>();
         }
     }
-    
+
+    private static string[] allProgLines
+    {
+        get
+        {
+            if (File.Exists(Plugin.ProgSavePath))
+            {
+                return File.ReadAllLines(Plugin.ProgSavePath);
+            }
+
+            File.Create(Plugin.ProgSavePath);
+            return Array.Empty<string>();
+        }
+    }
 
 
     public static void MarkAchievementComplete(AchievementInfo achInfo)
@@ -63,18 +75,59 @@ public static class AchievementManager
 
     private static void SaveToFile(AchievementInfo achInfo)
     {
-        if (!File.Exists(SavePath))
+        if (!File.Exists(Plugin.SavePath))
         {
-            File.Create(SavePath);
-            using var sw = new StreamWriter(SavePath);
+            File.Create(Plugin.SavePath);
+            using var sw = new StreamWriter(Plugin.SavePath);
             sw.WriteLine($"{achInfo.Id}");
             sw.Close();
         }
-        else if (File.Exists(SavePath))
+        else if (File.Exists(Plugin.SavePath))
         {
-            using var sw = new StreamWriter(SavePath, true);
+            using var sw = new StreamWriter(Plugin.SavePath, true);
             sw.WriteLine($"{achInfo.Id}");
             sw.Close();
+        }
+    }
+
+    private static void SaveProgAchievement(AchievementInfo achInfo)
+    {
+        if (!File.Exists(Plugin.ProgSavePath))
+        {
+            File.Create(Plugin.ProgSavePath);
+
+            using var sw = new StreamWriter(Plugin.ProgSavePath);
+            sw.WriteLine($"{achInfo.Id} - {achInfo.progress}");
+            sw.Close();
+        }
+        else if (File.Exists(Plugin.ProgSavePath))
+        {
+            List<string> lines = new List<string>(File.ReadAllLines(Plugin.ProgSavePath));
+            for (int index = 0; index < lines.Count; index++)
+            {
+                string line = lines[index];
+                if (line.Contains(achInfo.Id))
+                {
+                    lines[index] = $"{achInfo.Id} - {achInfo.progress}";
+                    File.WriteAllLines(Plugin.ProgSavePath, lines);
+                    return;
+                }
+            }
+            
+            using var sw = new StreamWriter(Plugin.ProgSavePath, true);
+            sw.WriteLine($"{achInfo.Id} - {achInfo.progress}");
+            sw.Close();
+        }
+    }
+
+    public static void SaveAllProgAchievements()
+    {
+        foreach (AchievementInfo achInfo in TypeToAchInfo.Values)
+        {
+            if (achInfo.isProgressive)
+            {
+                SaveProgAchievement(achInfo);
+            }
         }
     }
 
@@ -100,11 +153,19 @@ public static class AchievementManager
     {
         foreach (AchievementInfo info in infos)
         {
-            foreach (string line in allLines)
+            foreach (string line in allSaveLines)
             {
                 if (info.Id == line)
                 {
                     info.isCompleted = true;
+                }
+            }
+
+            foreach (string line in allProgLines)
+            {
+                if (line.Contains(info.Id) && info.isProgressive)
+                {
+                    info.progress = Convert.ToInt32(line.Split('-')[1]);
                 }
             }
             IdToAchInfo.Add(info.Id, info);

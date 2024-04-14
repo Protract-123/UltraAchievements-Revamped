@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 using BepInEx;
 using HarmonyLib;
@@ -16,11 +17,23 @@ public class Plugin : BaseUnityPlugin
     private static string ModFolder => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
     internal static Sprite questionMark;
     public static GameObject TerminalTemplate;
+    
+    public static readonly string SavePath = Path.Combine(Application.persistentDataPath, "achList.txt");
+    public static readonly string ProgSavePath = Path.Combine(Application.persistentDataPath, "achProgress.txt");
 
     private void Awake()
     {
         Harmony harmony = new Harmony("Protract.UltraAchievementsRevamped");
         harmony.PatchAll();
+
+        if (!File.Exists(SavePath))
+        {
+            File.Create(SavePath);
+        }
+        if (!File.Exists(ProgSavePath))
+        {
+            File.Create(ProgSavePath);
+        }
     }
 
     private void Start()
@@ -57,5 +70,10 @@ public class Plugin : BaseUnityPlugin
             term.transform.localPosition = new Vector3(10, 2, 32);
             term.transform.rotation = new Quaternion(0, 0, 0, 0);
         }
+    }
+
+    private void OnDestroy()
+    {
+        AchievementManager.SaveAllProgAchievements();
     }
 }
