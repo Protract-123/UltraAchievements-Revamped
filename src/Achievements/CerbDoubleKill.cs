@@ -11,7 +11,7 @@ public class CerbDoubleKill : MonoBehaviour
     private static bool timerActive = false;
     private static float timer = 0f;
     
-    [HarmonyPatch(typeof(EnemyIdentifier), nameof(EnemyIdentifier.Death))]
+    [HarmonyPatch(typeof(EnemyIdentifier), nameof(EnemyIdentifier.Death), [typeof(bool)])]
     public static void Prefix(EnemyIdentifier __instance)
     {
         if (__instance.gameObject.TryGetComponent<StatueBoss>(out _))
