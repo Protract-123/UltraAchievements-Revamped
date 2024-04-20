@@ -21,9 +21,7 @@ public class Plugin : BaseUnityPlugin
     
     public static readonly string SavePath = Path.Combine(Application.persistentDataPath, "achList.txt");
     public static readonly string ProgSavePath = Path.Combine(Application.persistentDataPath, "achProgress.txt");
-
-    internal ConfigEntry<bool> showBaseAchievements;
-
+    
     private void Awake()
     {
         Harmony harmony = new Harmony("Protract.UltraAchievementsRevamped");
@@ -37,7 +35,6 @@ public class Plugin : BaseUnityPlugin
         {
             File.Create(ProgSavePath);
         }
-        showBaseAchievements = Config.Bind("General", "ShowBaseAchievements", true, "Whether to show base achievements, included with the mod, in the terminal");
     }
 
     private void Start()
