@@ -1,8 +1,6 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using BepInEx;
-using BepInEx.Configuration;
 using HarmonyLib;
 using UltraAchievements_Revamped.Achievements;
 using UnityEngine;
@@ -62,15 +60,16 @@ public class Plugin : BaseUnityPlugin
     private void OnSceneChange(Scene current, Scene next)
     {
         AllPRanks.CheckRanks();
+        
+        FirstRoomPrefab room = FindObjectOfType<FirstRoomPrefab>();
+        if (room == null) return;
+        
+        GameObject firstRoom = room.transform.GetChild(0).gameObject;
 
-        GameObject firstRoom = FindObjectOfType<FirstRoomPrefab>().transform.GetChild(0).gameObject;
-
-        if (firstRoom != null)
-        {
-            GameObject term = Instantiate(TerminalTemplate, firstRoom.transform);
-            term.transform.localPosition = new Vector3(10, 2, 32);
-            term.transform.rotation = new Quaternion(0, 0, 0, 0);
-        }
+        if (firstRoom == null) return;
+        GameObject term = Instantiate(TerminalTemplate, firstRoom.transform);
+        term.transform.localPosition = new Vector3(10, 2, 32);
+        term.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
     private void OnDestroy()

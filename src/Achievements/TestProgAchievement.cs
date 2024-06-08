@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace UltraAchievements_Revamped.Achievements;
 
+/*
 [RegisterAchievement("ultraAchievements.testprog")]
 [HarmonyPatch]
 public class TestProgAchievement
@@ -21,3 +22,4 @@ public class TestProgAchievement
         }
     }
 }
+*/
