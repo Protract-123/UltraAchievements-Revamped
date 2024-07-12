@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UltraAchievements_Revamped;
+using UltraAchievements_Lib;
 
 public class CreateAssets : MonoBehaviour
 {

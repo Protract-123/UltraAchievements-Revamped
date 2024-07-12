@@ -280,12 +280,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4741001321722607388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1499942743, guid: 1755382bcd4b74b0a946cad86e6f95ab, type: 3}
+  m_Script: {fileID: 474271537, guid: 979bf2d028c5ee04e83d730bd3c8a742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Title: {fileID: 2465291575301269602}
-  Icon: {fileID: 8367168181028165385}
-  Description: {fileID: 1212046553698951659}
+  title: {fileID: 2465291575301269602}
+  icon: {fileID: 8367168181028165385}
+  description: {fileID: 1212046553698951659}
 --- !u!222 &6119950080100031075
 CanvasRenderer:
   m_ObjectHideFlags: 0

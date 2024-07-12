@@ -9,13 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -228705970, guid: 1755382bcd4b74b0a946cad86e6f95ab, type: 3}
+  m_Script: {fileID: -2135996662, guid: 979bf2d028c5ee04e83d730bd3c8a742, type: 3}
   m_Name: Catapulted
   m_EditorClassIdentifier: 
-  Id: ultraAchievements.catapulted
-  Name: Catapulted
-  Icon: {fileID: 21300000, guid: e6df9014ae1258949916ae2e48006545, type: 3}
-  Description: Use magnets with a nailgun to fling an enemy
-  HolderTemplate: {fileID: 4741001321722607388, guid: 012a0d884cac64eae8fe85aca3308f0d,
+  id: ultraAchievements.catapulted
+  achName: Catapulted
+  icon: {fileID: 21300000, guid: e6df9014ae1258949916ae2e48006545, type: 3}
+  description: Ancient siege weaponry truly is peak
+  holderTemplate: {fileID: 4741001321722607388, guid: 012a0d884cac64eae8fe85aca3308f0d,
     type: 3}
+  isHidden: 0
+  isProgressive: 0
+  maxProgress: 0
   isCompleted: 0
+  progress: 0
