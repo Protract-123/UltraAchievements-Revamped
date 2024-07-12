@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2135996662, guid: 979bf2d028c5ee04e83d730bd3c8a742, type: 3}
+  m_Name: Delete Save
+  m_EditorClassIdentifier: 
+  id: ultraAchievements.deletesave
+  achName: All for nothing at all
+  icon: {fileID: 21300000, guid: de6096f4c2330434bb47f390514d4bdc, type: 3}
+  description: One step forward, Two steps back
+  holderTemplate: {fileID: 4741001321722607388, guid: 012a0d884cac64eae8fe85aca3308f0d,
+    type: 3}
+  isHidden: 0
+  isProgressive: 0
+  maxProgress: 0
+  isCompleted: 0
+  progress: 0
