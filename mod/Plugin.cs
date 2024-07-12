@@ -15,7 +15,7 @@ namespace UltraAchievements_Revamped;
 public class Plugin : BaseUnityPlugin
 {
     private static AssetBundle _modBundle;
-    private static string ModFolder => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+    internal static string ModFolder => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
     internal static Sprite QuestionMark;
     private static GameObject _terminalTemplate;
 
@@ -62,5 +62,7 @@ public class Plugin : BaseUnityPlugin
         GameObject term = Instantiate(_terminalTemplate, firstRoom.transform);
         term.transform.localPosition = new Vector3(10, 2, 32);
         term.transform.rotation = new Quaternion(0, 0, 0, 0);
+        
+        
     }
 }

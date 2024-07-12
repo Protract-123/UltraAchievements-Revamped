@@ -53,4 +53,14 @@
   <ItemGroup>
     <Content Include="lib\UltraAchievements_Lib.dll" />
   </ItemGroup>
+  
+  
+  <ItemGroup>
+    <None Remove="CryptASCII.txt" />
+  </ItemGroup>
+  
+  
+  <ItemGroup>
+    <None Include="Misc\CryptASCII.txt" />
+  </ItemGroup>
 </Project>
