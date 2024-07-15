@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4251906924
+CRC: 3109326286
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a9f84197da17405e98c209cb284ca7cc
+    Hash: 19002db8b01a6a22f6d5e31cf2e0ed79
   TypeTreeHash:
     serializedVersion: 2
     Hash: 80e90ed1a6c3db831e98fe4fa5438442
@@ -121,15 +121,19 @@ Assets:
 - Assets/Mod Assets/Sprites/Icons/KillFish.png
 - Assets/Mod Assets/Sprites/Icons/MeetYourMaker.png
 - Assets/Mod Assets/Sprites/Icons/Florp.png
+- Assets/Mod Assets/AchievementInfo/Suicide.asset
 - Assets/Mod Assets/AchievementInfo/Kill Fish.asset
 - Assets/Mod Assets/AchievementHolder/Default Holder.prefab
 - Assets/Mod Assets/Sprites/Icons/OneinMillion.png
 - Assets/Mod Assets/AchievementInfo/V2QuickKill.asset
 - Assets/Mod Assets/Sprites/Icons/Compressed.png
 - Assets/Mod Assets/Sprites/Icons/Chargeback.png
+- Assets/Mod Assets/AchievementInfo/Sandbox Addict.asset
 - Assets/Mod Assets/AchievementInfo/All P-Ranks.asset
 - Assets/Mod Assets/AchievementInfo/Start.asset
+- Assets/Mod Assets/Sprites/Icons/SandboxAddict.png
 - Assets/Mod Assets/AchievementInfo/Speeding.asset
+- Assets/Mod Assets/Sprites/Icons/Suicde.png
 - Assets/Mod Assets/Sprites/Icons/CerbDoubleKill.png
 - Assets/Mod Assets/AchievementInfo/Minotaur Sky.asset
 - Assets/Mod Assets/AchievementInfo/OneInMill.asset

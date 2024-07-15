@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 namespace UltraAchievements_Revamped;
 
 [BepInPlugin("protract.ultrakill.ultra_achievements_revamped", "UltraAchievements", "1.0.0")]
-[BepInDependency("protract.ultrakill.ultra_achievements_lib", BepInDependency.DependencyFlags.HardDependency)]
+[BepInDependency("protract.ultrakill.ultra_achievements_lib")]
 public class Plugin : BaseUnityPlugin
 {
     private static AssetBundle _modBundle;
@@ -62,7 +62,5 @@ public class Plugin : BaseUnityPlugin
         GameObject term = Instantiate(_terminalTemplate, firstRoom.transform);
         term.transform.localPosition = new Vector3(10, 2, 32);
         term.transform.rotation = new Quaternion(0, 0, 0, 0);
-        
-        
     }
 }

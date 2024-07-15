@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Minotaur Sky
   m_EditorClassIdentifier: 
   id: ultraAchievements.minotaursky
-  achName: The Sky
-  icon: {fileID: 21300000, guid: b1986a73139fd4a4c89ccb954b7b3ebf, type: 3}
+  achName: Meet Your Maker
+  icon: {fileID: 21300000, guid: 25b8790870a28834f8cb755e8da37276, type: 3}
   description: God's greatest gift is the freedom to choose
   holderTemplate: {fileID: 4741001321722607388, guid: 012a0d884cac64eae8fe85aca3308f0d,
     type: 3}

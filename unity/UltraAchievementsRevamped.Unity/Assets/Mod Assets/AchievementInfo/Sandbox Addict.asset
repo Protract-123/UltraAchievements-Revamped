@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -2135996662, guid: 979bf2d028c5ee04e83d730bd3c8a742, type: 3}
-  m_Name: Kill Fish
+  m_Name: Sandbox Addict
   m_EditorClassIdentifier: 
-  id: ultraAchievements.killfish
-  achName: Fish Size 2
-  icon: {fileID: 21300000, guid: 4b1de6f77e2ba7444867b736d7a9e1a0, type: 3}
-  description: Due to you killing a fish, your fish size 2 rights have been revoked
+  id: ultraAchievements.sandbox
+  achName: Sandbox Addict
+  icon: {fileID: 21300000, guid: 9e450eeb4d26e2940b98eea1f29b1d32, type: 3}
+  description: Consider playing Garry's Mod
   holderTemplate: {fileID: 4741001321722607388, guid: 012a0d884cac64eae8fe85aca3308f0d,
     type: 3}
   isHidden: 0
-  isProgressive: 0
-  maxProgress: 0
+  isProgressive: 1
+  maxProgress: 18000
   isCompleted: 0
   progress: 0

@@ -51,7 +51,6 @@ public static class AchievementManager
             GameConsole.Console.Instance.ProcessInput("Achievement does not exist, please check that the id matches");
             return;
         }
-        GameConsole.Console.Instance.ProcessInput($"Achievement {achInfo.achName} logged");
 
         if (achInfo.isCompleted) return;
 

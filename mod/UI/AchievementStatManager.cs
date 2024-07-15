@@ -26,8 +26,8 @@ public class AchievementStatManager : MonoBehaviour
             achievements++;
         }
 
-        totalAchievements.text = $"<color=orange>{achievements}</color> - COMPLETED ACHIEVEMENTS";
-        completedAchievements.text = $"<color=orange>{compAchievements}</color> - TOTAL ACHIEVEMENTS";
+        totalAchievements.text = $"<color=orange>{achievements}</color> - TOTAL ACHIEVEMENTS";
+        completedAchievements.text = $"<color=orange>{compAchievements}</color> - COMPLETED ACHIEVEMENTS";
         
         //TODO add mini game scores
     }
