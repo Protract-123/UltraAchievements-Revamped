@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3109326286
+CRC: 298797047
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 19002db8b01a6a22f6d5e31cf2e0ed79
+    Hash: b1120a40a488e3f7fcdb53ee47ece550
   TypeTreeHash:
     serializedVersion: 2
     Hash: 80e90ed1a6c3db831e98fe4fa5438442
@@ -100,12 +100,16 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Mod Assets/Sprites/Icons/PipeClip.png
+- Assets/Mod Assets/Sprites/Icons/RotatingRainbow.png
+- Assets/Mod Assets/AchievementInfo/RotatingRainbow.asset
 - Assets/Mod Assets/AchievementInfo/MindflayerQuick.asset
 - Assets/Mod Assets/AchievementInfo/Cerb DoubleKill.asset
 - Assets/Mod Assets/Sprites/DefaultHolderSprite.png
 - Assets/Mod Assets/Sprites/Icons/Ultracrypt.png
+- Assets/Mod Assets/Sprites/Icons/SoftDamage.png
 - Assets/Mod Assets/AchievementInfo/Delete Save.asset
 - Assets/Mod Assets/Sprites/Icons/MinotaurSky.png
+- Assets/Mod Assets/AchievementInfo/SoftDamage.asset
 - Assets/Mod Assets/Sprites/Icons/Catapulted.png
 - Assets/Mod Assets/Sprites/Icons/DeathSimulator.png
 - Assets/Mod Assets/Sprites/Icons/V2IntroKill.png
@@ -121,11 +125,13 @@ Assets:
 - Assets/Mod Assets/Sprites/Icons/KillFish.png
 - Assets/Mod Assets/Sprites/Icons/MeetYourMaker.png
 - Assets/Mod Assets/Sprites/Icons/Florp.png
+- Assets/Mod Assets/Sprites/Icons/LightningBottle.png
 - Assets/Mod Assets/AchievementInfo/Suicide.asset
 - Assets/Mod Assets/AchievementInfo/Kill Fish.asset
 - Assets/Mod Assets/AchievementHolder/Default Holder.prefab
 - Assets/Mod Assets/Sprites/Icons/OneinMillion.png
 - Assets/Mod Assets/AchievementInfo/V2QuickKill.asset
+- Assets/Mod Assets/AchievementInfo/Lightning Bottle.asset
 - Assets/Mod Assets/Sprites/Icons/Compressed.png
 - Assets/Mod Assets/Sprites/Icons/Chargeback.png
 - Assets/Mod Assets/AchievementInfo/Sandbox Addict.asset
