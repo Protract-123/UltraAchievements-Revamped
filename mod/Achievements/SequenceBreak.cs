@@ -19,7 +19,7 @@ public class SequenceBreak
             {
                 if (!HasWeapon("Revolver"))
                 {
-                    AchievementManager.MarkAchievementComplete(AchievementManager.GetAchievementInfo(typeof(StatsManager)));
+                    AchievementManager.MarkAchievementComplete(AchievementManager.GetAchievementInfo(typeof(SequenceBreak)));
                 }
                 break;
             }
@@ -27,7 +27,7 @@ public class SequenceBreak
             {
                 if (!HasWeapon("Shotgun"))
                 {
-                    AchievementManager.MarkAchievementComplete(AchievementManager.GetAchievementInfo(typeof(StatsManager)));
+                    AchievementManager.MarkAchievementComplete(AchievementManager.GetAchievementInfo(typeof(SequenceBreak)));
                 }
                 break;
             }
@@ -35,7 +35,7 @@ public class SequenceBreak
             {
                 if (!HasWeapon("Nailgun"))
                 {
-                    AchievementManager.MarkAchievementComplete(AchievementManager.GetAchievementInfo(typeof(StatsManager)));
+                    AchievementManager.MarkAchievementComplete(AchievementManager.GetAchievementInfo(typeof(SequenceBreak)));
                 }
                 break;
             }
@@ -43,7 +43,7 @@ public class SequenceBreak
             {
                 if (!HasWeapon("Railcannon"))
                 {
-                    AchievementManager.MarkAchievementComplete(AchievementManager.GetAchievementInfo(typeof(StatsManager)));
+                    AchievementManager.MarkAchievementComplete(AchievementManager.GetAchievementInfo(typeof(SequenceBreak)));
                 }
                 break;
             }
@@ -51,7 +51,7 @@ public class SequenceBreak
             {
                 if (!HasWeapon("Rocket Launcher"))
                 {
-                    AchievementManager.MarkAchievementComplete(AchievementManager.GetAchievementInfo(typeof(StatsManager)));
+                    AchievementManager.MarkAchievementComplete(AchievementManager.GetAchievementInfo(typeof(SequenceBreak)));
                 }
                 break;
             }

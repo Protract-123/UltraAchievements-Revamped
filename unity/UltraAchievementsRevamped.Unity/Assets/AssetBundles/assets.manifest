@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 298797047
+CRC: 2703509707
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b1120a40a488e3f7fcdb53ee47ece550
+    Hash: 882178847f4c6216c4715d3c45a080af
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 80e90ed1a6c3db831e98fe4fa5438442
+    Hash: 3342e686fb4aee4a165455a4a2d80d57
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -34,8 +34,6 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 2561b8c02d38d884ca20076f798adee4, type: 3}
@@ -49,6 +47,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
 - Class: 114
@@ -112,7 +112,9 @@ Assets:
 - Assets/Mod Assets/AchievementInfo/SoftDamage.asset
 - Assets/Mod Assets/Sprites/Icons/Catapulted.png
 - Assets/Mod Assets/Sprites/Icons/DeathSimulator.png
+- Assets/Mod Assets/Sprites/Icons/DoubleIt.png
 - Assets/Mod Assets/Sprites/Icons/V2IntroKill.png
+- Assets/Mod Assets/AchievementInfo/SequenceBreak.asset
 - Assets/Mod Assets/AchievementInfo/Florp.asset
 - Assets/Mod Assets/Sprites/Icons/DeleteSave.png
 - Assets/Mod Assets/Sprites/Icons/All-P-Ranks.png
@@ -130,6 +132,7 @@ Assets:
 - Assets/Mod Assets/AchievementInfo/Kill Fish.asset
 - Assets/Mod Assets/AchievementHolder/Default Holder.prefab
 - Assets/Mod Assets/Sprites/Icons/OneinMillion.png
+- Assets/Mod Assets/AchievementInfo/DoubleIt.asset
 - Assets/Mod Assets/AchievementInfo/V2QuickKill.asset
 - Assets/Mod Assets/AchievementInfo/Lightning Bottle.asset
 - Assets/Mod Assets/Sprites/Icons/Compressed.png
@@ -139,6 +142,7 @@ Assets:
 - Assets/Mod Assets/AchievementInfo/Start.asset
 - Assets/Mod Assets/Sprites/Icons/SandboxAddict.png
 - Assets/Mod Assets/AchievementInfo/Speeding.asset
+- Assets/Mod Assets/Sprites/Icons/SequenceBreak.png
 - Assets/Mod Assets/Sprites/Icons/Suicde.png
 - Assets/Mod Assets/Sprites/Icons/CerbDoubleKill.png
 - Assets/Mod Assets/AchievementInfo/Minotaur Sky.asset

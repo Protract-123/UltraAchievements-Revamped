@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: -2135996662, guid: 979bf2d028c5ee04e83d730bd3c8a742, type: 3}
   m_Name: DoubleIt
   m_EditorClassIdentifier: 
-  id: 
-  achName: 
-  icon: {fileID: 0}
-  description: 
+  id: ultraAchievements.doubleit
+  achName: Double It!
+  icon: {fileID: 21300000, guid: 95d3b194999911d44b224bb030d72959, type: 3}
+  description: And give it to the next enemy
   holderTemplate: {fileID: 0}
   isHidden: 0
   isProgressive: 0

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: -2135996662, guid: 979bf2d028c5ee04e83d730bd3c8a742, type: 3}
   m_Name: SequenceBreak
   m_EditorClassIdentifier: 
-  id: 
-  achName: 
-  icon: {fileID: 0}
-  description: 
+  id: ultraAchievements.sequencebreak
+  achName: Sequence Break
+  icon: {fileID: 21300000, guid: cb16a47cb4d650e4ba9917df534798ca, type: 3}
+  description: I think you forgot your primary objective
   holderTemplate: {fileID: 0}
   isHidden: 0
   isProgressive: 0
