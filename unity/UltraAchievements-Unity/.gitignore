@@ -23,7 +23,7 @@ com.*/
 
 
 
-# Below is copied from https://github.com/github/gitignore/blob/main/Unity.gitignore
+## Below is copied from https://github.com/github/gitignore/blob/main/Unity.gitignore
 
 .utmp/
 /[Ll]ibrary/
