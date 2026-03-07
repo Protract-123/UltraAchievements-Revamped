@@ -1,5 +1,8 @@
-﻿using BepInEx;
+﻿using System;
+using System.Collections;
+using BepInEx;
 using BepInEx.Logging;
+using UnityEngine;
 
 namespace UltraAchievementsRevamped.Core;
 
@@ -19,5 +22,25 @@ public class Plugin : BaseUnityPlugin
         // Plugin startup logic
         Logger = base.Logger;
         Logger.LogInfo($"{PluginInfo.Name} {PluginInfo.Version} has loaded!");
+        
+        AchievementInfo testInfo =  ScriptableObject.CreateInstance<AchievementInfo>();
+        testInfo.id = "test";
+        AchievementManager.RegisterAchievementInfos([testInfo]);
+    }
+
+    private void Start()
+    {
+        StartCoroutine(SaveAchievements());
+    }
+
+    private static IEnumerator SaveAchievements()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(60f);
+            
+            AchievementManager.SaveAchievementProgress();
+            Logger.LogInfo($"Achievements saved at {Time.time}");
+        }
     }
 }
