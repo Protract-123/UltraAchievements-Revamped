@@ -3,15 +3,22 @@ using BepInEx.Logging;
 
 namespace UltraAchievementsRevamped.Mod;
 
-[BepInPlugin("", "", "")]
+[BepInPlugin(PluginInfo.Guid, PluginInfo.Name, PluginInfo.Version)]
+[BepInDependency("protract.ultrakill.ultra_achievements_core", "2.0.0")]
 public class Plugin : BaseUnityPlugin
 {
-    internal static new ManualLogSource Logger;
+    private static class PluginInfo {
+        public const string Name = "UltraAchievementsRevamped.Mod";
+        public const string Guid = "protract.ultrakill.ultra_achievements_revamped";
+        public const string Version = "2.0.0";
+    }
+    
+    internal new static ManualLogSource Logger;
         
     private void Awake()
     {
         // Plugin startup logic
         Logger = base.Logger;
-        Logger.LogInfo($"Plugin is loaded!");
+        Logger.LogInfo($"{PluginInfo.Name} {PluginInfo.Version} has loaded!");
     }
 }
