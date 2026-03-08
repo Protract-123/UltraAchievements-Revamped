@@ -1,27 +1,8 @@
 # Installed unity plugins
 com.*/
 
-# Rude/Ultrakill files
-/Assets/ULTRAKILL Assets
-/Assets/ULTRAKILL Others
-/Assets/RudeEditorPrefabs
-/Assets/RudeScripts
-/Assets/Scripts
-
-# Unrequired unity files
-/Assets/Editor
-/Assets/AddressableAssetsData
-/Assets/Packages
-/Assets/Scenes
-/Assets/Maps
-/Assets/TextMesh Pro
-/tmp
-
-# Assets/[directory] meta files
-/Assets/*.meta
-
-
-
+# Generated Bundles
+/Built Bundles
 
 ## Below is copied from https://github.com/github/gitignore/blob/main/Unity.gitignore
 

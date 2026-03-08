@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.codewriter.triinspector": "file:../com.codewriter.triinspector@67ee3d8ada",
+    "com.daniel-geo.unityhackatime": "https://github.com/daniel-geo/unity-hackatime.git#package",
     "com.unity.addressables": "1.21.21",
     "com.unity.ai.navigation": "1.1.5",
     "com.unity.animation.rigging": "1.2.1",
