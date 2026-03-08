@@ -76,6 +76,42 @@ public static class AchievementManager
         Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.id} as complete");
     }
 
+    public static void AddProgressToAchievement(string id, int amount)
+    {
+        AchievementInfo achievementInfo = GetAchievementInfo(id);
+
+        if (achievementInfo == null) return; // Already logged by GetAchievementInfo
+
+        if (achievementInfo is ProgressiveAchievementInfo progressiveAchievementInfo)
+        {
+            progressiveAchievementInfo.currentProgress += amount;
+            if (progressiveAchievementInfo.currentProgress >= progressiveAchievementInfo.maxProgress)
+            {
+                MarkAchievementComplete(progressiveAchievementInfo);
+            }
+        }
+        else  Plugin.Logger.LogError($"Achievement {id} is not a progressive achievement");
+    }
+
+    public static void AddProgressToAchievement(AchievementInfo achievementInfo, int amount)
+    {
+        if (achievementInfo == null)
+        {
+            Plugin.Logger.LogError("AchievementInfo is not valid");
+            return;
+        }
+        
+        if (achievementInfo is ProgressiveAchievementInfo progressiveAchievementInfo)
+        {
+            progressiveAchievementInfo.currentProgress += amount;
+            if (progressiveAchievementInfo.currentProgress >= progressiveAchievementInfo.maxProgress)
+            {
+                MarkAchievementComplete(progressiveAchievementInfo);
+            }
+        }
+        else  Plugin.Logger.LogError("Achievement is not a progressive achievement");
+    }
+
     private static void RegisterInfo(AchievementInfo info)
     {
         _saveDataCache ??= LoadAchievementProgress();
