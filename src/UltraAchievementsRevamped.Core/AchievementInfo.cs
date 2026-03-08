@@ -2,15 +2,21 @@ using UnityEngine;
 
 namespace UltraAchievementsRevamped.Core;
 
-[CreateAssetMenu(fileName = "NewAchievementInfo", menuName = "UltraAchievements/Achievement Info")]
 public class AchievementInfo : ScriptableObject
 {
-    public string id;
-    public string sourceMod;
-    public Sprite icon;
-    public string displayName;
-    [TextArea] public string description;
-    public bool isHidden;
+    [SerializeField] private string id;
+    [SerializeField] private string sourceMod;
+    [SerializeField] private Sprite icon;
+    [SerializeField] private string displayName;
+    [SerializeField, TextArea] private string description;
+    [SerializeField] private bool isHidden;
+
+    public string Id => id;
+    public string SourceMod => sourceMod;
+    public Sprite Icon => icon;
+    public string DisplayName => displayName;
+    public string Description => description;
+    public bool IsHidden => isHidden;
     
-    [HideInInspector] public bool isComplete;
+    [System.NonSerialized] public bool IsComplete;
 }

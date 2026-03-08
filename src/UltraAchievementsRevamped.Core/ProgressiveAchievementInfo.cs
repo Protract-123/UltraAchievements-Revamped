@@ -2,9 +2,10 @@ using UnityEngine;
 
 namespace UltraAchievementsRevamped.Core;
 
-[CreateAssetMenu(fileName = "NewProgressiveAchievementInfo", menuName = "UltraAchievements/Progressive Achievement Info")]
 public class ProgressiveAchievementInfo : AchievementInfo
 {
-    public int maxProgress;
-    [HideInInspector] public int currentProgress;
+    [SerializeField] private int maxProgress;
+    public int MaxProgress => maxProgress;
+    
+    [System.NonSerialized] public int CurrentProgress;
 }

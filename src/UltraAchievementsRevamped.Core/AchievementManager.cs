@@ -22,9 +22,9 @@ public static class AchievementManager
                 continue;                
             }
 
-            if (IdToAchInfo.ContainsKey(info.id))
+            if (IdToAchInfo.ContainsKey(info.Id))
             {
-                Plugin.Logger.LogError($"Achievement with id {info.id} has already been registered");
+                Plugin.Logger.LogError($"Achievement with id {info.Id} has already been registered");
                 continue;
             }
             
@@ -37,7 +37,7 @@ public static class AchievementManager
                     RegisterInfo(info);
                     break;
             }
-            Plugin.Logger.LogInfo($"Registered achievement with id: {info.id}");
+            Plugin.Logger.LogInfo($"Registered achievement with id: {info.Id}");
         }
     }
     
@@ -56,10 +56,11 @@ public static class AchievementManager
 
         if (achievementInfo == null) return; // Already logged by GetAchievementInfo
         
-        if (achievementInfo.isComplete) return;
+        if (achievementInfo.IsComplete) return;
         
-        achievementInfo.isComplete = true;
-        Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.id} as complete");
+        achievementInfo.IsComplete = true;
+        Plugin.AchievementPopUp.CreateInstance(achievementInfo, null);
+        Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.Id} as complete");
     }
 
     public static void MarkAchievementComplete(AchievementInfo achievementInfo)
@@ -70,10 +71,11 @@ public static class AchievementManager
             return;
         }
         
-        if (achievementInfo.isComplete) return;
+        if (achievementInfo.IsComplete) return;
         
-        achievementInfo.isComplete = true;
-        Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.id} as complete");
+        achievementInfo.IsComplete = true;
+        Plugin.AchievementPopUp.CreateInstance(achievementInfo, null);
+        Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.Id} as complete");
     }
 
     public static void AddProgressToAchievement(string id, int amount)
@@ -84,8 +86,8 @@ public static class AchievementManager
 
         if (achievementInfo is ProgressiveAchievementInfo progressiveAchievementInfo)
         {
-            progressiveAchievementInfo.currentProgress += amount;
-            if (progressiveAchievementInfo.currentProgress >= progressiveAchievementInfo.maxProgress)
+            progressiveAchievementInfo.CurrentProgress += amount;
+            if (progressiveAchievementInfo.CurrentProgress >= progressiveAchievementInfo.MaxProgress)
             {
                 MarkAchievementComplete(progressiveAchievementInfo);
             }
@@ -103,8 +105,8 @@ public static class AchievementManager
         
         if (achievementInfo is ProgressiveAchievementInfo progressiveAchievementInfo)
         {
-            progressiveAchievementInfo.currentProgress += amount;
-            if (progressiveAchievementInfo.currentProgress >= progressiveAchievementInfo.maxProgress)
+            progressiveAchievementInfo.CurrentProgress += amount;
+            if (progressiveAchievementInfo.CurrentProgress >= progressiveAchievementInfo.MaxProgress)
             {
                 MarkAchievementComplete(progressiveAchievementInfo);
             }
@@ -116,27 +118,27 @@ public static class AchievementManager
     {
         _saveDataCache ??= LoadAchievementProgress();
         
-        if (_saveDataCache.TryGetValue(info.id, out (bool isComplete, int? progress) saveData))
+        if (_saveDataCache.TryGetValue(info.Id, out (bool isComplete, int? progress) saveData))
         {
-            info.isComplete = saveData.isComplete;
+            info.IsComplete = saveData.isComplete;
         }
         
-        IdToAchInfo.Add(info.id, info);
+        IdToAchInfo.Add(info.Id, info);
     }
 
     private static void RegisterProgressiveInfo(ProgressiveAchievementInfo info)
     {
         _saveDataCache ??= LoadAchievementProgress();
 
-        if (_saveDataCache.TryGetValue(info.id, out (bool isComplete, int? progress) saveData))
+        if (_saveDataCache.TryGetValue(info.Id, out (bool isComplete, int? progress) saveData))
         {
-            info.isComplete = saveData.isComplete;
+            info.IsComplete = saveData.isComplete;
 
             if (saveData.progress.HasValue)
-                info.currentProgress = saveData.progress.Value;
+                info.CurrentProgress = saveData.progress.Value;
         }
 
-        IdToAchInfo.Add(info.id, info);
+        IdToAchInfo.Add(info.Id, info);
     }
     
     internal static void SaveAchievementProgress()
@@ -148,11 +150,11 @@ public static class AchievementManager
         foreach ((string id, AchievementInfo info) in IdToAchInfo)
         {
             saveWriter.Write(id);
-            saveWriter.Write(info.isComplete);
+            saveWriter.Write(info.IsComplete);
             saveWriter.Write(info is ProgressiveAchievementInfo);
 
             if (info is ProgressiveAchievementInfo progressive)
-                saveWriter.Write(progressive.currentProgress);
+                saveWriter.Write(progressive.CurrentProgress);
         }
     }
 
