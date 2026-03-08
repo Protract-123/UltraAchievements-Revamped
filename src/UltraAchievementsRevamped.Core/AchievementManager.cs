@@ -16,6 +16,18 @@ public static class AchievementManager
     {
         foreach (AchievementInfo info in infos)
         {
+            if (info == null)
+            {
+                Plugin.Logger.LogError("Cannot register null achievement info");
+                continue;                
+            }
+
+            if (IdToAchInfo.ContainsKey(info.id))
+            {
+                Plugin.Logger.LogError($"Achievement with id {info.id} has already been registered");
+                continue;
+            }
+            
             switch (info)
             {
                 case ProgressiveAchievementInfo progressiveInfo:
@@ -32,21 +44,29 @@ public static class AchievementManager
     public static AchievementInfo GetAchievementInfo(string id)
     {
         IdToAchInfo.TryGetValue(id, out AchievementInfo achInfo);
+        
+        if (achInfo == null) Plugin.Logger.LogError($"Achievement {id} has not been registered");
+        
         return achInfo;
     }
 
     public static void MarkAchievementComplete(string id)
     {
         AchievementInfo achievementInfo = GetAchievementInfo(id);
-        if (achievementInfo != null) MarkAchievementComplete(achievementInfo);
-        else Plugin.Logger.LogError($"Achievement {id} does not exist");
+
+        if (achievementInfo == null) return; // Already logged by GetAchievementInfo
+        
+        if (achievementInfo.isComplete) return;
+        
+        achievementInfo.isComplete = true;
+        Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.id} as complete");
     }
 
     public static void MarkAchievementComplete(AchievementInfo achievementInfo)
     {
         if (achievementInfo == null)
         {
-            Plugin.Logger.LogInfo("Achievement does not exist");
+            Plugin.Logger.LogError("AchievementInfo is not valid");
             return;
         }
         
