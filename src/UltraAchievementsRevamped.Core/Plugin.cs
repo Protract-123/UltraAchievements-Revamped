@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.IO;
-using System.Reflection;
+﻿using System.Collections;
 using BepInEx;
 using BepInEx.Logging;
-using TMPro;
 using UltraAchievementsRevamped.Core.Assets;
 using UltraAchievementsRevamped.Core.UI;
 using UnityEngine;
@@ -33,14 +29,9 @@ public class Plugin : BaseUnityPlugin
         Logger.LogInfo($"{PluginInfo.Name} {PluginInfo.Version} has loaded!");
         
         AssetManager.LoadCatalog();
-        AchievementPopUp = Addressables.LoadAssetAsync<GameObject>("Assets/UltraAchievements.Core/Achievment Overlay.prefab").WaitForCompletion().GetComponent<AchievementPopUp>();
+        AchievementPopUp = Addressables.LoadAssetAsync<GameObject>("Assets/UltraAchievements.Core/Achievement Overlay.prefab").WaitForCompletion().GetComponent<AchievementPopUp>();
         AchievementInfo testAchievement = Addressables.LoadAssetAsync<AchievementInfo>("Assets/UltraAchievementsCore/Custom Achievement.asset").WaitForCompletion();
         AchievementManager.RegisterAchievementInfos([testAchievement]);
-    }
-
-    private void Start()
-    {
-        StartCoroutine(SaveAchievements());
     }
     
     void Update()
@@ -48,17 +39,6 @@ public class Plugin : BaseUnityPlugin
         if (Keyboard.current != null && Keyboard.current.kKey.wasPressedThisFrame)
         {
             AchievementManager.MarkAchievementComplete("core.test");
-        }
-    }
-
-    private static IEnumerator SaveAchievements()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(60f);
-            
-            AchievementManager.SaveAchievementProgress();
-            Logger.LogInfo($"Achievements saved at {Time.time}");
         }
     }
 }

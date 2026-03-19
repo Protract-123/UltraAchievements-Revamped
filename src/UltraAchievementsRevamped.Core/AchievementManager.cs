@@ -61,6 +61,8 @@ public static class AchievementManager
         achievementInfo.IsComplete = true;
         Plugin.AchievementPopUp.CreateInstance(achievementInfo, null);
         Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.Id} as complete");
+        
+        SaveAchievementProgress();
     }
 
     public static void MarkAchievementComplete(AchievementInfo achievementInfo)
@@ -76,6 +78,8 @@ public static class AchievementManager
         achievementInfo.IsComplete = true;
         Plugin.AchievementPopUp.CreateInstance(achievementInfo, null);
         Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.Id} as complete");
+        
+        SaveAchievementProgress();
     }
 
     public static void AddProgressToAchievement(string id, int amount)
@@ -92,7 +96,9 @@ public static class AchievementManager
                 MarkAchievementComplete(progressiveAchievementInfo);
             }
         }
-        else  Plugin.Logger.LogError($"Achievement {id} is not a progressive achievement");
+        else Plugin.Logger.LogError($"Achievement {id} is not a progressive achievement");
+        
+        SaveAchievementProgress();
     }
 
     public static void AddProgressToAchievement(AchievementInfo achievementInfo, int amount)
@@ -111,7 +117,9 @@ public static class AchievementManager
                 MarkAchievementComplete(progressiveAchievementInfo);
             }
         }
-        else  Plugin.Logger.LogError("Achievement is not a progressive achievement");
+        else Plugin.Logger.LogError($"Achievement {achievementInfo.Id} is not a progressive achievement");
+
+        SaveAchievementProgress();
     }
 
     private static void RegisterInfo(AchievementInfo info)
@@ -141,7 +149,7 @@ public static class AchievementManager
         IdToAchInfo.Add(info.Id, info);
     }
     
-    internal static void SaveAchievementProgress()
+    private static void SaveAchievementProgress()
     {
         using BinaryWriter saveWriter = new(File.OpenWrite(SavePath));
         saveWriter.Write(SaveFormatVersion);
@@ -156,6 +164,8 @@ public static class AchievementManager
             if (info is ProgressiveAchievementInfo progressive)
                 saveWriter.Write(progressive.CurrentProgress);
         }
+        
+        Plugin.Logger.LogInfo($"Achievements saved at {Time.time}");
     }
 
     private static Dictionary<string, (bool isComplete, int? progress)> LoadAchievementProgress()

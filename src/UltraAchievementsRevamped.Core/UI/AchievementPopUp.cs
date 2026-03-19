@@ -27,6 +27,7 @@ public class AchievementPopUp : MonoBehaviour
         yield return new WaitForSeconds(DestroyDelay);
         
         hudOpenEffect.Reverse(30f);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 

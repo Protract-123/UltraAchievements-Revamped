@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5253626239573258114}
   - component: {fileID: 6694948299410797402}
   m_Layer: 0
-  m_Name: Achievment Overlay
+  m_Name: Achievement Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
