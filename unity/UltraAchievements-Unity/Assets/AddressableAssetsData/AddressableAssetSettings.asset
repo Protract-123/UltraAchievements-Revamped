@@ -33,7 +33,7 @@ MonoBehaviour:
   m_ShaderBundleCustomNaming: shader
   m_MonoScriptBundleNaming: 3
   m_CheckForContentUpdateRestrictionsOption: 0
-  m_MonoScriptBundleCustomNaming: achievements.core
+  m_MonoScriptBundleCustomNaming: mod
   m_RemoteCatalogBuildPath:
     m_Id: 77b9fe938349d044483a7a55c8f726aa
   m_RemoteCatalogLoadPath:
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
-  m_overridePlayerVersion: wbp
+  m_overridePlayerVersion: mod
   m_GroupAssets:
   - {fileID: 11400000, guid: a69b941d88febb94ba2a0a100ee3e12c, type: 2}
   - {fileID: 11400000, guid: 74491fc2f73c4e84d8ac7b7487883677, type: 2}
@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a8c15722c2e5f1547bd424db168e8efb, type: 2}
   - {fileID: 11400000, guid: 8671f40e80161434c821c2d115981ef3, type: 2}
   - {fileID: 11400000, guid: da8c0538544ab7d43866f6633a579be9, type: 2}
+  - {fileID: 11400000, guid: 0110aa5fde5976143b20f22bef9301aa, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -72,9 +73,9 @@ MonoBehaviour:
       - m_Id: d7b86999df71c6b46816eb554dab8be5
         m_Value: '{AngryLevelLoader.Plugin.tempFolderPath}\\84f68b9c1a50d80499274b256beb6b3f'
       - m_Id: 77b9fe938349d044483a7a55c8f726aa
-        m_Value: Built Bundles
+        m_Value: Built Bundles/Mod
       - m_Id: a6b7af91c989c954497662a9fd6c00df
-        m_Value: '{UltraAchievementsRevamped.Core.Assets.AssetManager.AssetPath}'
+        m_Value: '{UltraAchievementsRevamped.Mod.Assets.AssetManager.AssetPath}'
     m_ProfileEntryNames:
     - m_Id: 87be92261c3caeb4da9e05afc8c0be38
       m_Name: BuildTarget

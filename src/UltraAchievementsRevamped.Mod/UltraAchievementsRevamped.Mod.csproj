@@ -29,6 +29,12 @@
         <Reference Include="UnityEngine.CoreModule">
             <HintPath>$(ManagedDir)/UnityEngine.CoreModule.dll</HintPath>
         </Reference>
+        <Reference Include="Unity.Addressables">
+            <HintPath>$(ManagedDir)/Unity.Addressables.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.ResourceManager">
+            <HintPath>$(ManagedDir)/Unity.ResourceManager.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
     <ItemGroup>

@@ -14,46 +14,59 @@ namespace BuildPipeline.Editor.Building
 {
 	public static class AddressableBuilder
 	{
-		//AssetPathLocation needs to lead to a getter that returns the path where you store all your bundles in the mod.
-		public const string AssetPathLocation = "{UltraAchievementsRevamped.Core.Assets.AssetManager.AssetPath}";
-		private const string MonoscriptBundleNaming = "achievements.core";
 		private const string WbpTemplateName = "WBP Assets";
-		private const string CatalogPostfix = "wbp";
 		public const string DefaultGroup = "Default Local Group";
-		
+
 		private static AddressableAssetSettings Settings => AddressableAssetSettingsDefaultObject.Settings;
-		
-		//TODO make configurable
-		private static string s_buildPath = "Built Bundles";
+
 		public static readonly string[] CommonGroupNames = { "Assets", "Game Prefabs", "Music", "Other" };
 
 		public static void Build(BuildMode buildMode)
 		{
+			List<ModConfig> mods = PipelineSettings.Instance.Mods;
+
+			if (mods.Count == 0)
+			{
+				Debug.LogError("No mods configured. Open Addressable Build Pipeline/Config to add mods.");
+				return;
+			}
+
 			ValidateAddressables();
-			SetCorrectValuesForSettings();
-			SetDefaultValuesForSchemas();
 
-			if (!Directory.Exists(s_buildPath))
+			foreach (ModConfig mod in mods)
 			{
-				Directory.CreateDirectory(s_buildPath);
-			}
-
-			buildMode.PreBuild(s_buildPath, Settings);
-			AddressableAssetSettings.BuildPlayerContent(out AddressablesPlayerBuildResult result);
-			FixMonoscripts();
-			buildMode.PostBuild(s_buildPath, Settings);
-			
-			if (!string.IsNullOrEmpty(result.Error))
-			{
-				throw new System.Exception(result.Error);
-			}
-
-			if (PipelineSettings.Instance.DoCopy)
-			{
-				CopyBundles();
+				Debug.Log($"Building mod: {mod.Name}");
+				BuildMod(mod, buildMode);
+				Debug.Log($"Finished building mod: {mod.Name}");
 			}
 		}
-		
+
+		private static void BuildMod(ModConfig mod, BuildMode buildMode)
+		{
+			SetCorrectValuesForSettings(mod);
+			SetDefaultValuesForSchemas(mod);
+
+			if (!Directory.Exists(mod.BuildPath))
+			{
+				Directory.CreateDirectory(mod.BuildPath);
+			}
+
+			buildMode.PreBuild(mod.BuildPath, Settings);
+			AddressableAssetSettings.BuildPlayerContent(out AddressablesPlayerBuildResult result);
+			FixMonoscripts(mod);
+			buildMode.PostBuild(mod.BuildPath, Settings);
+
+			if (!string.IsNullOrEmpty(result.Error))
+			{
+				throw new System.Exception($"Build failed for mod '{mod.Name}': {result.Error}");
+			}
+
+			if (mod.DoCopy)
+			{
+				CopyBundles(mod);
+			}
+		}
+
 		public static void RefreshGroups()
 		{
 			EditorUtility.SetDirty(Settings);
@@ -64,26 +77,31 @@ namespace BuildPipeline.Editor.Building
 			AddressableAssetSettingsDefaultObject.Settings = AssetDatabase.LoadAssetAtPath<AddressableAssetSettings>(assetPath);
 		}
 
-		private static void CopyBundles()
+		private static void CopyBundles(ModConfig mod)
 		{
-			foreach (string file in Directory.GetFiles(s_buildPath))
+			if (!Directory.Exists(mod.CopyPath))
 			{
-				File.Copy(file, Path.Combine(PipelineSettings.Instance.BuildCopyPath, file.Split(Path.DirectorySeparatorChar)[^1]), true);
+				Directory.CreateDirectory(mod.CopyPath);
+			}
+
+			foreach (string file in Directory.GetFiles(mod.BuildPath))
+			{
+				File.Copy(file, Path.Combine(mod.CopyPath, Path.GetFileName(file)), true);
 			}
 		}
 
-		private static void FixMonoscripts()
+		private static void FixMonoscripts(ModConfig mod)
 		{
-			string fileName = MonoscriptBundleNaming + "_monoscripts.bundle";
+			string fileName = mod.MonoscriptBundleNaming + "_monoscripts.bundle";
 			string currentBuildTarget = "StandaloneWindows64"; //TODO investigate why this is the same on linux??
-			File.Copy(Path.Combine(Addressables.RuntimePath, currentBuildTarget, fileName), Path.Combine(s_buildPath, fileName), true);
+			File.Copy(Path.Combine(Addressables.RuntimePath, currentBuildTarget, fileName), Path.Combine(mod.BuildPath, fileName), true);
 
-			string catalogName = $"catalog_{CatalogPostfix}.json";
-			string catalogContent = File.ReadAllText(Path.Combine(s_buildPath, catalogName));
+			string catalogName = $"catalog_{mod.CatalogPostfix}.json";
+			string catalogContent = File.ReadAllText(Path.Combine(mod.BuildPath, catalogName));
 			string oldMonoscriptPath = @"{UnityEngine.AddressableAssets.Addressables.RuntimePath}\\" + currentBuildTarget + @"\\" + fileName;
-			string newMonoscriptPath = $@"{AssetPathLocation}\\{fileName}";
-			Debug.Log($"Replacing {oldMonoscriptPath} with {newMonoscriptPath}");
-			File.WriteAllText(Path.Combine(s_buildPath, catalogName), catalogContent.Replace(oldMonoscriptPath, newMonoscriptPath));
+			string newMonoscriptPath = $@"{mod.AssetPathLocation}\\{fileName}";
+			Debug.Log($"[{mod.Name}] Replacing {oldMonoscriptPath} with {newMonoscriptPath}");
+			File.WriteAllText(Path.Combine(mod.BuildPath, catalogName), catalogContent.Replace(oldMonoscriptPath, newMonoscriptPath));
 		}
 
 
@@ -125,9 +143,15 @@ namespace BuildPipeline.Editor.Building
 				return;
 			}
 
-			SetDefaultWbpValuesForSchema(groupSchema);
+			// Use a default mod config for template schema values
+			ModConfig defaultMod = new ModConfig
+			{
+				BuildPath = "Built Bundles",
+				AssetPathLocation = ""
+			};
+			SetDefaultWbpValuesForSchema(groupSchema, defaultMod);
 		}
-		
+
 		// TundraEditor: Core/Editor/TundraInit.cs
         // thanks pitr i stole this completely ;3
         private static void ValidateAddressables(bool forceRewrite = false)
@@ -151,27 +175,29 @@ namespace BuildPipeline.Editor.Building
                 AddressableAssetSettingsDefaultObject.Settings = AssetDatabase.LoadAssetAtPath<AddressableAssetSettings>(assetPath);
             }
         }
-        
-        private static void SetCorrectValuesForSettings()
+
+        private static void SetCorrectValuesForSettings(ModConfig mod)
         {
-            Settings.profileSettings.CreateValue("ModBuildPath", s_buildPath);
-            Settings.profileSettings.CreateValue("ModLoadPath", AssetPathLocation);
-            Settings.profileSettings.SetValue(Settings.activeProfileId, "ModBuildPath", s_buildPath);
-            Settings.profileSettings.SetValue(Settings.activeProfileId, "ModLoadPath", AssetPathLocation);
+            Settings.profileSettings.CreateValue("ModBuildPath", mod.BuildPath);
+            Settings.profileSettings.CreateValue("ModLoadPath", mod.AssetPathLocation);
+            Settings.profileSettings.SetValue(Settings.activeProfileId, "ModBuildPath", mod.BuildPath);
+            Settings.profileSettings.SetValue(Settings.activeProfileId, "ModLoadPath", mod.AssetPathLocation);
 
             Settings.IgnoreUnsupportedFilesInBuild = true;
-            Settings.OverridePlayerVersion = CatalogPostfix;
+            Settings.OverridePlayerVersion = mod.CatalogPostfix;
             Settings.BuildRemoteCatalog = true;
             Settings.RemoteCatalogBuildPath.SetVariableByName(Settings, "ModBuildPath");
             Settings.RemoteCatalogLoadPath.SetVariableByName(Settings, "ModLoadPath");
             Settings.MonoScriptBundleNaming = MonoScriptBundleNaming.Custom;
-            Settings.MonoScriptBundleCustomNaming = MonoscriptBundleNaming;
+            Settings.MonoScriptBundleCustomNaming = mod.MonoscriptBundleNaming;
             Settings.ShaderBundleNaming = ShaderBundleNaming.Custom;
             Settings.ShaderBundleCustomNaming = "shader";
         }
 
-        private static void SetDefaultValuesForSchemas()
+        private static void SetDefaultValuesForSchemas(ModConfig mod)
         {
+	        HashSet<string> modGroupNames = new HashSet<string>(mod.GroupNames);
+
 	        foreach (AddressableAssetGroup group in Settings.groups)
 	        {
 		        BundledAssetGroupSchema schema = group.GetSchema<BundledAssetGroupSchema>();
@@ -185,19 +211,29 @@ namespace BuildPipeline.Editor.Building
 		        {
 			        continue;
 		        }
-				
+
 		        if (CommonGroupNames.Contains(group.name))
 		        {
 			        SetDefaultCommonValuesForSchema(schema);
 			        continue;
 		        }
-		        SetDefaultWbpValuesForSchema(schema);
+
+		        if (modGroupNames.Contains(group.name))
+		        {
+			        SetDefaultWbpValuesForSchema(schema, mod);
+			        schema.IncludeInBuild = true;
+			        continue;
+		        }
+
+		        // Groups not belonging to current mod are excluded from build
+		        schema.IncludeInBuild = false;
+		        EditorUtility.SetDirty(schema.Group);
 	        }
         }
 
-		private static void SetDefaultWbpValuesForSchema(BundledAssetGroupSchema groupSchema)
+		private static void SetDefaultWbpValuesForSchema(BundledAssetGroupSchema groupSchema, ModConfig mod)
 		{
-			SetCorrectValuesForSettings(); //if this isnt done then modbuildpath/loadpath may not exist and it will be empty
+			SetCorrectValuesForSettings(mod); //if this isnt done then modbuildpath/loadpath may not exist and it will be empty
 
 			groupSchema.IncludeInBuild = true;
 			groupSchema.IncludeAddressInCatalog = true;
@@ -208,7 +244,7 @@ namespace BuildPipeline.Editor.Building
 			groupSchema.UseAssetBundleCrc = false;
 			EditorUtility.SetDirty(groupSchema.Group);
 		}
-		
+
 		// taken from tundra core MapExport.ExportMap()
 		private static void SetDefaultCommonValuesForSchema(BundledAssetGroupSchema groupSchema)
 		{

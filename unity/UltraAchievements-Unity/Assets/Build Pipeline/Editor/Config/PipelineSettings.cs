@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,8 +10,7 @@ namespace BuildPipeline.Editor.Config
         public const string SettingsFileName = "Settings.asset";
         public static readonly string SettingsPath = Path.Combine("Assets", "Build Pipeline", SettingsFileName);
 
-        public bool DoCopy;
-        public string BuildCopyPath;
+        public List<ModConfig> Mods = new List<ModConfig>();
 
         public static PipelineSettings Instance
         {
@@ -27,7 +27,5 @@ namespace BuildPipeline.Editor.Config
                 return instance;
             }
         }
-
-        public string AllSettings => string.Join(",", DoCopy, BuildCopyPath);
     }
 }

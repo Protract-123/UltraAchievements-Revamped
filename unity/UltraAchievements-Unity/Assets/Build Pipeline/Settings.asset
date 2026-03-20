@@ -12,5 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9f991451f4408597cc223e4622ba7e, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  DoCopy: 0
-  BuildCopyPath: 
+  Mods:
+  - Name: UltraAchievementsRevamped.Core
+    AssetPathLocation: '{UltraAchievementsRevamped.Core.Assets.AssetManager.AssetPath}'
+    MonoscriptBundleNaming: core
+    CatalogPostfix: core
+    BuildPath: Built Bundles/Core
+    GroupNames:
+    - UltraAchievements.Core
+    DoCopy: 0
+    CopyPath: 
+  - Name: UltraAchievementsRevamped.Mod
+    AssetPathLocation: '{UltraAchievementsRevamped.Mod.Assets.AssetManager.AssetPath}'
+    MonoscriptBundleNaming: mod
+    CatalogPostfix: mod
+    BuildPath: Built Bundles/Mod
+    GroupNames:
+    - UltraAchievements.Mod
+    DoCopy: 0
+    CopyPath: 
