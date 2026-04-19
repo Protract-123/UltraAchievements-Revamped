@@ -1,4 +1,5 @@
 using System.Collections;
+using UltraAchievementsRevamped.Core.Achievements;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,9 +21,9 @@ public class AchievementPopUp : MonoBehaviour
         NewMovement.Instance?.GetComponent<AudioSource>().PlayOneShot(achievementSound);
         StartCoroutine(WaitAndDestroy());
     }
-    
-    
-    IEnumerator WaitAndDestroy()
+
+
+    private IEnumerator WaitAndDestroy()
     {
         yield return new WaitForSeconds(DestroyDelay);
         

@@ -4,7 +4,7 @@ using BepInEx.Logging;
 namespace UltraAchievementsRevamped.Mod;
 
 [BepInPlugin(PluginInfo.Guid, PluginInfo.Name, PluginInfo.Version)]
-[BepInDependency("protract.ultrakill.ultra_achievements_core", "2.0.0")]
+[BepInDependency(Core.Plugin.PluginInfo.Guid, Core.Plugin.PluginInfo.Version)]
 public class Plugin : BaseUnityPlugin
 {
     private static class PluginInfo {

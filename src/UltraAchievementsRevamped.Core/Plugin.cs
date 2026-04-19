@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using BepInEx;
 using BepInEx.Logging;
-using UltraAchievementsRevamped.Core.Assets;
+using HarmonyLib;
+using UltraAchievementsRevamped.Core.Achievements;
 using UltraAchievementsRevamped.Core.UI;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -13,14 +14,13 @@ namespace UltraAchievementsRevamped.Core;
 
 public class Plugin : BaseUnityPlugin
 {
-    private static class PluginInfo {
+    public static class PluginInfo {
         public const string Name = "UltraAchievementsRevamped.Core";
         public const string Guid = "protract.ultrakill.ultra_achievements_core";
         public const string Version = "2.0.0";
     }
     
     internal new static ManualLogSource Logger;
-    internal static AchievementPopUp AchievementPopUp;
     
     private void Awake()
     {
@@ -28,8 +28,11 @@ public class Plugin : BaseUnityPlugin
         Logger = base.Logger;
         Logger.LogInfo($"{PluginInfo.Name} {PluginInfo.Version} has loaded!");
         
-        AssetManager.LoadCatalog();
-        AchievementPopUp = Addressables.LoadAssetAsync<GameObject>("Assets/UltraAchievements.Core/Achievement Overlay.prefab").WaitForCompletion().GetComponent<AchievementPopUp>();
+        Harmony harmony = new(PluginInfo.Guid);
+        harmony.PatchAll();
+        
+        Assets.LoadAssets();
+        
         AchievementInfo testAchievement = Addressables.LoadAssetAsync<AchievementInfo>("Assets/UltraAchievementsCore/Custom Achievement.asset").WaitForCompletion();
         AchievementManager.RegisterAchievementInfos([testAchievement]);
     }

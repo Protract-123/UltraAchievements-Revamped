@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
-namespace UltraAchievementsRevamped.Core;
+namespace UltraAchievementsRevamped.Core.Achievements;
 
 public static class AchievementManager
 {
@@ -11,6 +12,10 @@ public static class AchievementManager
     private static Dictionary<string, (bool isComplete, int? progress)> _saveDataCache;
 
     private static readonly Dictionary<string, AchievementInfo> IdToAchInfo = new();
+    internal static Dictionary<string, List<AchievementInfo>> ModNameToAchInfo =>
+        IdToAchInfo.Values
+            .GroupBy(a => a.SourceMod)
+            .ToDictionary(g => g.Key, g => g.ToList());
     
     public static void RegisterAchievementInfos(IEnumerable<AchievementInfo> infos)
     {
@@ -59,7 +64,7 @@ public static class AchievementManager
         if (achievementInfo.IsComplete) return;
         
         achievementInfo.IsComplete = true;
-        Plugin.AchievementPopUp.CreateInstance(achievementInfo, null);
+        Assets.AchievementPopUp.CreateInstance(achievementInfo, null);
         Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.Id} as complete");
         
         SaveAchievementProgress();
@@ -76,7 +81,7 @@ public static class AchievementManager
         if (achievementInfo.IsComplete) return;
         
         achievementInfo.IsComplete = true;
-        Plugin.AchievementPopUp.CreateInstance(achievementInfo, null);
+        Assets.AchievementPopUp.CreateInstance(achievementInfo, null);
         Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.Id} as complete");
         
         SaveAchievementProgress();

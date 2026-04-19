@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UltraAchievementsRevamped.Core;
+namespace UltraAchievementsRevamped.Core.Achievements;
 
 public class AchievementInfo : ScriptableObject
 {
