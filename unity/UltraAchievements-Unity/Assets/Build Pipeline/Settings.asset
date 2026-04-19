@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mods:
   - Name: UltraAchievementsRevamped.Core
-    AssetPathLocation: '{UltraAchievementsRevamped.Core.Assets.AssetManager.AssetPath}'
+    AssetPathLocation: '{UltraAchievementsRevamped.Core.Assets.AssetPath}'
     MonoscriptBundleNaming: core
     CatalogPostfix: core
     BuildPath: Built Bundles/Core

@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1658997688, guid: a6ea4832ed25e8b42a9fe6f24e8bfdb1, type: 3}
+  m_Script: {fileID: -1481099388, guid: 32183c11afec0684ea6a2ac85e45f89a, type: 3}
   m_Name: Custom Achievement
   m_EditorClassIdentifier: 
   id: core.test
   sourceMod: UltraAchievements.Core
-  icon: {fileID: 21300000, guid: 6d449e9bf1021314e96df9752e96f5ac, type: 3}
+  icon: {fileID: 21300000, guid: 7d71dc6f33fa426409c01b04a6168f21, type: 3}
   displayName: Testing Achievement
-  description: This is a really funny descriotion which makes everyone laugh which
-    happens to be 2-3 lines!!!
+  description: A very reasonable description length which is perhaps 2-3 lines hopefully
+    and has a very reasonable sense in humour
   isHidden: 0

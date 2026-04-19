@@ -17,18 +17,28 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: a0e8f042e71305945a42feba06f74369
   m_SerializeEntries:
-  - m_GUID: edd8cd4dd0d0d7744bc98433eaddd442
-    m_Address: Assets/UltraAchievements.Core/Achievement Overlay.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0ad5017731d0cef47864df5f259759ef
-    m_Address: Assets/UltraAchievementsCore/Custom Achievement.asset
+  - m_GUID: 11e0ad1752b556a4eb2ef55492deb422
+    m_Address: Assets/UltraAchievementsCore/UI Icon.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6d449e9bf1021314e96df9752e96f5ac
     m_Address: Assets/UltraAchievementsCore/placeholder.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 645e6e8279a267146b7352c591157e48
+    m_Address: Assets/UltraAchievementsCore/Custom Achievement.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51694af59d9d2b14c85f9300379e7d85
+    m_Address: Assets/UltraAchievementsCore/Achievement Panel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: edd8cd4dd0d0d7744bc98433eaddd442
+    m_Address: Assets/UltraAchievementsCore/Achievement Overlay.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
