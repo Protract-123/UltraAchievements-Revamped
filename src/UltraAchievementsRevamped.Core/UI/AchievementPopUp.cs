@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UltraAchievementsRevamped.Core.Achievements;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,8 +9,8 @@ namespace UltraAchievementsRevamped.Core.UI;
 public class AchievementPopUp : MonoBehaviour
 {
 #pragma warning disable CS0649
-    [SerializeField] private TMPro.TMP_Text titleText;
-    [SerializeField] private TMPro.TMP_Text descriptionText;
+    [SerializeField] private TMP_Text titleText;
+    [SerializeField] private TMP_Text descriptionText;
     [SerializeField] private Image achievementIcon;
 
     [SerializeField] private AudioClip achievementSound;
@@ -17,6 +18,8 @@ public class AchievementPopUp : MonoBehaviour
 #pragma warning restore CS0649
 
     private const float DestroyDelay = 10.0f;
+    private const float HUDReverseSpeed = 30f;
+    private const float HUDReverseTime = 1f;
 
     private void Start()
     {
@@ -24,19 +27,18 @@ public class AchievementPopUp : MonoBehaviour
         StartCoroutine(WaitAndDestroy());
     }
 
-
     private IEnumerator WaitAndDestroy()
     {
         yield return new WaitForSeconds(DestroyDelay);
 
-        hudOpenEffect.Reverse(30f);
-        yield return new WaitForSeconds(1f);
+        hudOpenEffect.Reverse(HUDReverseSpeed);
+        yield return new WaitForSeconds(HUDReverseTime);
         Destroy(gameObject);
     }
 
-    internal void CreateInstance(AchievementInfo achievementInfo, Transform parent)
+    internal static void CreateInstance(AchievementInfo achievementInfo, Transform parent)
     {
-        AchievementPopUp instance = Instantiate(gameObject, parent).GetComponent<AchievementPopUp>();
+        AchievementPopUp instance = Instantiate(Assets.AchievementPopUpPrefab, parent).GetComponent<AchievementPopUp>();
 
         instance.titleText.text = achievementInfo.DisplayName;
         instance.descriptionText.text = achievementInfo.Description;

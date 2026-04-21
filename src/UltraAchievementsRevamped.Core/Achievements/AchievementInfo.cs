@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace UltraAchievementsRevamped.Core.Achievements;
@@ -20,7 +21,7 @@ public class AchievementInfo : ScriptableObject
     public string Description => description;
     public bool IsHidden => isHidden;
 
-    [System.NonSerialized] public bool IsComplete;
+    [NonSerialized] internal bool IsComplete;
 
     public static T Create<T>(string id, string sourceMod, Sprite icon, string displayName,
         string description, bool isHidden) where T : AchievementInfo

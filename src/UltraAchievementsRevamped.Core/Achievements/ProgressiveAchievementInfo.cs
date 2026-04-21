@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace UltraAchievementsRevamped.Core.Achievements;
@@ -10,7 +11,7 @@ public class ProgressiveAchievementInfo : AchievementInfo
 
     public int MaxProgress => maxProgress;
 
-    [System.NonSerialized] public int CurrentProgress;
+    [NonSerialized] internal int CurrentProgress;
 
     public static ProgressiveAchievementInfo Create(string id, string sourceMod, Sprite icon, string displayName,
         string description, bool isHidden, int maxProgress)

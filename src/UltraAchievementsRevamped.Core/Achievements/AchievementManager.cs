@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UltraAchievementsRevamped.Core.UI;
 using UnityEngine;
 
 namespace UltraAchievementsRevamped.Core.Achievements;
@@ -44,15 +46,14 @@ public static class AchievementManager
                     break;
             }
 
-            Plugin.Logger.LogInfo($"Registered achievement with id: {info.Id}");
+            Plugin.Logger.LogInfo($"Registered achievement with id {info.Id}");
         }
     }
 
     public static AchievementInfo GetAchievementInfo(string id)
     {
-        IdToAchInfo.TryGetValue(id, out AchievementInfo achInfo);
-
-        if (!achInfo) Plugin.Logger.LogError($"Achievement {id} has not been registered");
+        if (!IdToAchInfo.TryGetValue(id, out AchievementInfo achInfo))
+            Plugin.Logger.LogError($"Achievement {id} has not been registered");
 
         return achInfo;
     }
@@ -61,11 +62,11 @@ public static class AchievementManager
     {
         AchievementInfo achievementInfo = GetAchievementInfo(id);
 
-        if (!achievementInfo) return;
+        if (achievementInfo == null) return;
         if (achievementInfo.IsComplete) return;
 
         achievementInfo.IsComplete = true;
-        Assets.AchievementPopUp.CreateInstance(achievementInfo, null);
+        AchievementPopUp.CreateInstance(achievementInfo, null);
         Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.Id} as complete");
 
         SaveAchievementProgress();
@@ -82,7 +83,7 @@ public static class AchievementManager
         if (achievementInfo.IsComplete) return;
 
         achievementInfo.IsComplete = true;
-        Assets.AchievementPopUp.CreateInstance(achievementInfo, null);
+        AchievementPopUp.CreateInstance(achievementInfo, null);
         Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.Id} as complete");
 
         SaveAchievementProgress();
@@ -100,11 +101,12 @@ public static class AchievementManager
             if (progressiveAchievementInfo.CurrentProgress >= progressiveAchievementInfo.MaxProgress)
             {
                 MarkAchievementComplete(progressiveAchievementInfo);
+                return;
             }
+
+            SaveAchievementProgress();
         }
         else Plugin.Logger.LogError($"Achievement {id} is not a progressive achievement");
-
-        SaveAchievementProgress();
     }
 
     public static void AddProgressToAchievement(AchievementInfo achievementInfo, int amount)
@@ -121,11 +123,12 @@ public static class AchievementManager
             if (progressiveAchievementInfo.CurrentProgress >= progressiveAchievementInfo.MaxProgress)
             {
                 MarkAchievementComplete(progressiveAchievementInfo);
+                return;
             }
+
+            SaveAchievementProgress();
         }
         else Plugin.Logger.LogError($"Achievement {achievementInfo.Id} is not a progressive achievement");
-
-        SaveAchievementProgress();
     }
 
     private static void RegisterInfo(AchievementInfo info)
@@ -157,7 +160,7 @@ public static class AchievementManager
 
     private static void SaveAchievementProgress()
     {
-        using BinaryWriter saveWriter = new(File.OpenWrite(SavePath));
+        using BinaryWriter saveWriter = new(File.Open(SavePath, FileMode.Create));
         saveWriter.Write(SaveFormatVersion);
         saveWriter.Write(IdToAchInfo.Count);
 
@@ -183,6 +186,14 @@ public static class AchievementManager
         {
             using BinaryReader saveReader = new(File.OpenRead(SavePath));
             int formatVersion = saveReader.ReadInt32();
+
+            if (formatVersion != SaveFormatVersion)
+            {
+                Plugin.Logger.LogError(
+                    $"Achievements could not be loaded due to mismatched format versions: {formatVersion} vs {SaveFormatVersion}");
+                return achievementProgress;
+            }
+
             int count = saveReader.ReadInt32();
 
             for (int i = 0; i < count; i++)
@@ -195,8 +206,9 @@ public static class AchievementManager
                 achievementProgress[id] = (isComplete, progress);
             }
         }
-        catch
+        catch (Exception e)
         {
+            Plugin.Logger.LogError($"Achievements could not be loaded from {SavePath}: {e.Message}");
             return achievementProgress;
         }
 

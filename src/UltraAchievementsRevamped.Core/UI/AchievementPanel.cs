@@ -41,7 +41,6 @@ public class AchievementPanel : MonoBehaviour
         foreach ((string modName, List<AchievementInfo> achievements) in AchievementManager.ModNameToAchInfo)
             CreateModButton(modName, achievements);
 
-
         GoToPage(0);
     }
 
@@ -89,6 +88,12 @@ public class AchievementPanel : MonoBehaviour
 
     private void GoToPage(int pageIndex)
     {
+        if (itemsPerPage <= 0)
+        {
+            Plugin.Logger.LogError($"{nameof(itemsPerPage)} on AchievementPanel must be greater than zero");
+            return;
+        }
+
         int start = pageIndex * itemsPerPage;
         int end = start + itemsPerPage;
 
@@ -104,17 +109,17 @@ public class AchievementPanel : MonoBehaviour
             if (i >= totalPages)
             {
                 pageButtons[i].interactable = false;
-                pageButtons[i].GetComponent<Image>().color = new Color(255, 255, 255, 255);
+                pageButtons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
             }
             else if (i == pageIndex)
             {
                 pageButtons[i].interactable = true;
-                pageButtons[i].GetComponent<Image>().color = new Color(255, 0, 0, 255);
+                pageButtons[i].GetComponent<Image>().color = new Color(1f, 0, 0, 1f);
             }
             else
             {
                 pageButtons[i].interactable = true;
-                pageButtons[i].GetComponent<Image>().color = new Color(255, 255, 255, 255);
+                pageButtons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
             }
         }
     }
@@ -124,7 +129,7 @@ public class AchievementPanel : MonoBehaviour
     private static void AchievementPanelPatch(ShopZone __instance)
     {
         GameObject mainPanel = __instance.transform.Find("Canvas/Background/Main Panel").gameObject;
-        AchievementPanel achievementPanel = Instantiate(Assets.AchievementPanel, mainPanel.transform);
+        AchievementPanel achievementPanel = Instantiate(Assets.AchievementPanelPrefab, mainPanel.transform);
 
         GameObject terminalIcon = __instance.transform.Find("Canvas/Background/Icon").gameObject;
         terminalIcon.AddComponent<Button>().interactable = true;

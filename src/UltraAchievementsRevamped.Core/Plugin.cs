@@ -21,7 +21,6 @@ public class Plugin : BaseUnityPlugin
 
     private void Awake()
     {
-        // Plugin startup logic
         Logger = base.Logger;
         Logger.LogInfo($"{PluginInfo.Name} {PluginInfo.Version} has loaded!");
 

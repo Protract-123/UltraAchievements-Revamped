@@ -1,13 +1,11 @@
 using System.IO;
 using System.Reflection;
-using HarmonyLib;
 using UltraAchievementsRevamped.Core.UI;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace UltraAchievementsRevamped.Core;
 
-[HarmonyPatch]
 internal static class Assets
 {
     // ReSharper disable once MemberCanBePrivate.Global
@@ -16,18 +14,18 @@ internal static class Assets
     private static string ModFolder => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
     private static string CatalogPath => Path.Combine(AssetPath, "catalog_core.json");
 
-    internal static AchievementPopUp AchievementPopUp;
-    internal static AchievementPanel AchievementPanel;
+    internal static AchievementPopUp AchievementPopUpPrefab;
+    internal static AchievementPanel AchievementPanelPrefab;
 
     internal static void LoadAssets()
     {
         Addressables.LoadContentCatalogAsync(CatalogPath, true).WaitForCompletion();
 
-        AchievementPopUp = Addressables
+        AchievementPopUpPrefab = Addressables
             .LoadAssetAsync<GameObject>("Assets/UltraAchievementsCore/Achievement Overlay.prefab").WaitForCompletion()
             .GetComponent<AchievementPopUp>();
 
-        AchievementPanel = Addressables
+        AchievementPanelPrefab = Addressables
             .LoadAssetAsync<GameObject>("Assets/UltraAchievementsCore/Achievement Panel.prefab").WaitForCompletion()
             .GetComponent<AchievementPanel>();
     }
