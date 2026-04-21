@@ -68,11 +68,14 @@ public class AchievementPanel : MonoBehaviour
 
         foreach (AchievementInfo achievement in achievements)
         {
+            if (achievement.IsHidden && !achievement.IsComplete) continue;
+
             GameObject entry = Instantiate(achievementTemplate, achievementContent);
             entry.SetActive(true);
             entry.transform.Find("Name").GetComponent<TMP_Text>().text = achievement.DisplayName;
             entry.transform.Find("Description").GetComponent<TMP_Text>().text = achievement.Description;
-            entry.transform.Find("Icon").GetComponent<Image>().sprite = achievement.Icon;
+
+            if (achievement.IsComplete) entry.transform.Find("Icon").GetComponent<Image>().sprite = achievement.Icon;
         }
 
         modPanels.Add(modPanel);
