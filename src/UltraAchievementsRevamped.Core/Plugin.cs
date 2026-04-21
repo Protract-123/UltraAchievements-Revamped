@@ -29,9 +29,16 @@ public class Plugin : BaseUnityPlugin
         harmony.PatchAll();
 
         Assets.LoadAssets();
-        
-        AchievementInfo testAchievement = Addressables.LoadAssetAsync<AchievementInfo>("Assets/UltraAchievementsCore/Custom Achievement.asset").WaitForCompletion();
-        AchievementManager.RegisterAchievementInfos([testAchievement]);
+
+        AchievementInfo testAchievement = Addressables
+            .LoadAssetAsync<AchievementInfo>("Assets/UltraAchievementsCore/Custom Achievement.asset")
+            .WaitForCompletion();
+
+        AchievementInfo testAchievement2 = AchievementInfo.Create<AchievementInfo>("core.test2",
+            "UltraAchievements.Core", testAchievement.Icon, "Code Achievement",
+            "An achievement created purely in code, absolutely no Unity required!", false);
+
+        AchievementManager.RegisterAchievementInfos([testAchievement, testAchievement2]);
     }
 
     private void Update()

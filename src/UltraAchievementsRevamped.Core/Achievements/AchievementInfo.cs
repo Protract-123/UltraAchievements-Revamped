@@ -21,4 +21,19 @@ public class AchievementInfo : ScriptableObject
     public bool IsHidden => isHidden;
 
     [System.NonSerialized] public bool IsComplete;
+
+    public static T Create<T>(string id, string sourceMod, Sprite icon, string displayName,
+        string description, bool isHidden) where T : AchievementInfo
+    {
+        T info = CreateInstance<T>();
+
+        info.id = id;
+        info.sourceMod = sourceMod;
+        info.icon = icon;
+        info.displayName = displayName;
+        info.description = description;
+        info.isHidden = isHidden;
+
+        return info;
+    }
 }
