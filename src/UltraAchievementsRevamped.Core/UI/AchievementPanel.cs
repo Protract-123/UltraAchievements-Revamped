@@ -10,18 +10,20 @@ namespace UltraAchievementsRevamped.Core.UI;
 [HarmonyPatch]
 public class AchievementPanel : MonoBehaviour
 {
-    public GameObject modButtonTemplate;
-    public GameObject modPanelTemplate;
-    public GameObject achievementTemplate;
+#pragma warning disable CS0649
+    [SerializeField] private GameObject modButtonTemplate;
+    [SerializeField] private GameObject modPanelTemplate;
+    [SerializeField] private GameObject achievementTemplate;
 
-    public ShopButton backButton;
+    [SerializeField] private ShopButton backButton;
+    [SerializeField] private int itemsPerPage;
+#pragma warning restore CS0649
 
-    public int itemsPerPage;
     private readonly List<GameObject> modButtons = [];
     private readonly List<Button> pageButtons = [];
     private readonly List<GameObject> modPanels = [];
 
-    public void Start()
+    private void Start()
     {
         Transform pageButtonParent = transform.Find("Left Panel/Buttons/Page Buttons");
         foreach (Transform child in pageButtonParent)

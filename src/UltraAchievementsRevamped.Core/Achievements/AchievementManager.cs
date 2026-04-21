@@ -12,11 +12,12 @@ public static class AchievementManager
     private static Dictionary<string, (bool isComplete, int? progress)> _saveDataCache;
 
     private static readonly Dictionary<string, AchievementInfo> IdToAchInfo = new();
+
     internal static Dictionary<string, List<AchievementInfo>> ModNameToAchInfo =>
         IdToAchInfo.Values
-            .GroupBy(a => a.SourceMod)
-            .ToDictionary(g => g.Key, g => g.ToList());
-    
+            .GroupBy(info => info.SourceMod)
+            .ToDictionary(grouping => grouping.Key, grouping => grouping.ToList());
+
     public static void RegisterAchievementInfos(IEnumerable<AchievementInfo> infos)
     {
         foreach (AchievementInfo info in infos)
@@ -24,7 +25,7 @@ public static class AchievementManager
             if (info == null)
             {
                 Plugin.Logger.LogError("Cannot register null achievement info");
-                continue;                
+                continue;
             }
 
             if (IdToAchInfo.ContainsKey(info.Id))
@@ -32,7 +33,7 @@ public static class AchievementManager
                 Plugin.Logger.LogError($"Achievement with id {info.Id} has already been registered");
                 continue;
             }
-            
+
             switch (info)
             {
                 case ProgressiveAchievementInfo progressiveInfo:
@@ -42,16 +43,17 @@ public static class AchievementManager
                     RegisterInfo(info);
                     break;
             }
+
             Plugin.Logger.LogInfo($"Registered achievement with id: {info.Id}");
         }
     }
-    
+
     public static AchievementInfo GetAchievementInfo(string id)
     {
         IdToAchInfo.TryGetValue(id, out AchievementInfo achInfo);
-        
-        if (achInfo == null) Plugin.Logger.LogError($"Achievement {id} has not been registered");
-        
+
+        if (!achInfo) Plugin.Logger.LogError($"Achievement {id} has not been registered");
+
         return achInfo;
     }
 
@@ -59,14 +61,13 @@ public static class AchievementManager
     {
         AchievementInfo achievementInfo = GetAchievementInfo(id);
 
-        if (achievementInfo == null) return; // Already logged by GetAchievementInfo
-        
+        if (!achievementInfo) return;
         if (achievementInfo.IsComplete) return;
-        
+
         achievementInfo.IsComplete = true;
         Assets.AchievementPopUp.CreateInstance(achievementInfo, null);
         Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.Id} as complete");
-        
+
         SaveAchievementProgress();
     }
 
@@ -74,16 +75,16 @@ public static class AchievementManager
     {
         if (achievementInfo == null)
         {
-            Plugin.Logger.LogError("AchievementInfo is not valid");
+            Plugin.Logger.LogError("Cannot mark null achievement info as complete");
             return;
         }
-        
+
         if (achievementInfo.IsComplete) return;
-        
+
         achievementInfo.IsComplete = true;
         Assets.AchievementPopUp.CreateInstance(achievementInfo, null);
         Plugin.Logger.LogInfo($"Marked achievement {achievementInfo.Id} as complete");
-        
+
         SaveAchievementProgress();
     }
 
@@ -91,7 +92,7 @@ public static class AchievementManager
     {
         AchievementInfo achievementInfo = GetAchievementInfo(id);
 
-        if (achievementInfo == null) return; // Already logged by GetAchievementInfo
+        if (achievementInfo == null) return;
 
         if (achievementInfo is ProgressiveAchievementInfo progressiveAchievementInfo)
         {
@@ -102,7 +103,7 @@ public static class AchievementManager
             }
         }
         else Plugin.Logger.LogError($"Achievement {id} is not a progressive achievement");
-        
+
         SaveAchievementProgress();
     }
 
@@ -110,10 +111,10 @@ public static class AchievementManager
     {
         if (achievementInfo == null)
         {
-            Plugin.Logger.LogError("AchievementInfo is not valid");
+            Plugin.Logger.LogError("Cannot add progress to null progressive achievement info");
             return;
         }
-        
+
         if (achievementInfo is ProgressiveAchievementInfo progressiveAchievementInfo)
         {
             progressiveAchievementInfo.CurrentProgress += amount;
@@ -130,12 +131,12 @@ public static class AchievementManager
     private static void RegisterInfo(AchievementInfo info)
     {
         _saveDataCache ??= LoadAchievementProgress();
-        
+
         if (_saveDataCache.TryGetValue(info.Id, out (bool isComplete, int? progress) saveData))
         {
             info.IsComplete = saveData.isComplete;
         }
-        
+
         IdToAchInfo.Add(info.Id, info);
     }
 
@@ -153,7 +154,7 @@ public static class AchievementManager
 
         IdToAchInfo.Add(info.Id, info);
     }
-    
+
     private static void SaveAchievementProgress()
     {
         using BinaryWriter saveWriter = new(File.OpenWrite(SavePath));
@@ -169,7 +170,7 @@ public static class AchievementManager
             if (info is ProgressiveAchievementInfo progressive)
                 saveWriter.Write(progressive.CurrentProgress);
         }
-        
+
         Plugin.Logger.LogInfo($"Achievements saved at {Time.time}");
     }
 
@@ -194,7 +195,10 @@ public static class AchievementManager
                 achievementProgress[id] = (isComplete, progress);
             }
         }
-        catch { return achievementProgress; }
+        catch
+        {
+            return achievementProgress;
+        }
 
         return achievementProgress;
     }
