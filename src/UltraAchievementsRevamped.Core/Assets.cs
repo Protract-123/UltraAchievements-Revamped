@@ -22,11 +22,11 @@ internal static class Assets
         Addressables.LoadContentCatalogAsync(CatalogPath, true).WaitForCompletion();
 
         AchievementPopUpPrefab = Addressables
-            .LoadAssetAsync<GameObject>("Assets/UltraAchievementsCore/Achievement Overlay.prefab").WaitForCompletion()
+            .LoadAssetAsync<GameObject>("UltraAchievementsCore/Achievement Overlay.prefab").WaitForCompletion()
             .GetComponent<AchievementPopUp>();
 
         AchievementPanelPrefab = Addressables
-            .LoadAssetAsync<GameObject>("Assets/UltraAchievementsCore/Achievement Panel.prefab").WaitForCompletion()
+            .LoadAssetAsync<GameObject>("UltraAchievementsCore/Achievement Panel.prefab").WaitForCompletion()
             .GetComponent<AchievementPanel>();
     }
 }

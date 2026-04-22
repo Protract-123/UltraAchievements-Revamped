@@ -23,7 +23,7 @@ MonoBehaviour:
     DoCopy: 0
     CopyPath: 
   - Name: UltraAchievementsRevamped.Mod
-    AssetPathLocation: '{UltraAchievementsRevamped.Mod.Assets.AssetManager.AssetPath}'
+    AssetPathLocation: '{UltraAchievementsRevamped.Mod.Assets.AssetPath}'
     MonoscriptBundleNaming: mod
     CatalogPostfix: mod
     BuildPath: Built Bundles/Mod

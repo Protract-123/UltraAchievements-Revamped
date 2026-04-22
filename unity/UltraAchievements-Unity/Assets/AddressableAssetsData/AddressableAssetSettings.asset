@@ -75,7 +75,7 @@ MonoBehaviour:
       - m_Id: 77b9fe938349d044483a7a55c8f726aa
         m_Value: Built Bundles/Mod
       - m_Id: a6b7af91c989c954497662a9fd6c00df
-        m_Value: '{UltraAchievementsRevamped.Mod.Assets.AssetManager.AssetPath}'
+        m_Value: '{UltraAchievementsRevamped.Mod.Assets.AssetPath}'
     m_ProfileEntryNames:
     - m_Id: 87be92261c3caeb4da9e05afc8c0be38
       m_Name: BuildTarget
@@ -113,6 +113,7 @@ MonoBehaviour:
     - Layer 8
     - Layer P
     - Layer E
+    - UltraAchievementsMod
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: fe62e8c455801714fb230a66a4aff275, type: 2}

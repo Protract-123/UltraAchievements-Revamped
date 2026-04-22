@@ -128,11 +128,10 @@ public class AchievementPanel : MonoBehaviour
     [HarmonyPostfix]
     private static void AchievementPanelPatch(ShopZone __instance)
     {
-        GameObject mainPanel = __instance.transform.Find("Canvas/Background/Main Panel").gameObject;
-        
         // Check for if this is a standard yellow terminal
         if (__instance.name != "Shop") return; 
-        if (mainPanel == null) return;
+        
+        GameObject mainPanel = __instance.transform.Find("Canvas/Background/Main Panel").gameObject;
         
         AchievementPanel achievementPanel = Instantiate(Assets.AchievementPanelPrefab, mainPanel.transform);
 
@@ -144,5 +143,6 @@ public class AchievementPanel : MonoBehaviour
         achievementPanelButton.toActivate = [achievementPanel.gameObject];
         achievementPanelButton.toDeactivate = [];
         achievementPanelButton.clickSound = achievementPanel.backButton.clickSound;
+
     }
 }

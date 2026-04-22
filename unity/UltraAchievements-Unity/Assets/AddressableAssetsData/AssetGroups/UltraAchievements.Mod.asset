@@ -17,15 +17,11 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 092119d86fdcabc448e31e77fe5cf10c
   m_SerializeEntries:
-  - m_GUID: 7d71dc6f33fa426409c01b04a6168f21
-    m_Address: Assets/UltraAchievementsMod/placeholder.png
+  - m_GUID: 0712dd38ee47ae64493f76061f4b66d2
+    m_Address: UltraAchievementsMod
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9c22292042284f8439d599a274294c9c
-    m_Address: Assets/UltraAchievementsMod/Custom Achievement.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - UltraAchievementsMod
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 81d9593b9c962094d86f7498ca6cf1ad, type: 2}

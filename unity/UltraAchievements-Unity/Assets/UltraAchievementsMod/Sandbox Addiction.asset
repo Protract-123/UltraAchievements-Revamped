@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1481099388, guid: 32183c11afec0684ea6a2ac85e45f89a, type: 3}
-  m_Name: Custom Achievement
+  m_Name: Sandbox Addiction
   m_EditorClassIdentifier: 
-  id: core.test
-  sourceMod: UltraAchievements.Core
-  icon: {fileID: 21300000, guid: 7d71dc6f33fa426409c01b04a6168f21, type: 3}
-  displayName: Testing Achievement
-  description: A very reasonable description length which is perhaps 2-3 lines hopefully
-    and has a very reasonable sense in humour
+  id: ultraAchievementsRevamped.sandboxAddiction
+  sourceMod: Ultra-Achievements
+  icon: {fileID: 21300000, guid: 57591de8d093af544a381b4d94756923, type: 3}
+  displayName: Sandbox Addiction
+  description: ...You do know there is a full game for this type of thing right?
+    No need to spend that much time in the sandbox
   isHidden: 0

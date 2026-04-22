@@ -1,0 +1,29 @@
+using System.Collections;
+using HarmonyLib;
+using UnityEngine;
+
+namespace UltraAchievementsRevamped.Mod.Achievements;
+
+[HarmonyPatch]
+public class SandboxAddiction : MonoBehaviour
+{
+    [HarmonyPatch(typeof(ShopZone), "Start")]
+    [HarmonyPostfix]
+    private static void AchievementPanelPatch(ShopZone __instance)
+    {
+        if (__instance.name != "Sandbox Shop") return;
+        __instance.gameObject.AddComponent<SandboxAddiction>();
+    }
+
+    private void Start() => StartCoroutine(SandboxTimeCheck());
+    
+    private static IEnumerator SandboxTimeCheck() {
+        WaitForSeconds wait = new(60f); 
+        while (true)
+        {
+            float sandboxHours = SteamController.Instance.GetSandboxStats().hoursSpend;
+            if (sandboxHours > 5) Core.Achievements.AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.sandboxAddiction");
+            yield return wait;
+        }
+    }
+}
