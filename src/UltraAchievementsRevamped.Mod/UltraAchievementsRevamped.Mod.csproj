@@ -35,6 +35,10 @@
         <Reference Include="Unity.ResourceManager">
             <HintPath>$(ManagedDir)/Unity.ResourceManager.dll</HintPath>
         </Reference>
+        <Reference Include="Unity.TextMeshPro">
+            <HintPath>$(ManagedDir)/Unity.TextMeshPro.dll</HintPath>
+        </Reference>
+
     </ItemGroup>
 
     <ItemGroup>
