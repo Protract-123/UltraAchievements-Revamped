@@ -1,6 +1,5 @@
 using HarmonyLib;
 using UltraAchievementsRevamped.Core.Achievements;
-using UnityEngine;
 
 namespace UltraAchievementsRevamped.Mod.Achievements;
 

@@ -1,9 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
-using UltraAchievementsRevamped.Core.Achievements;
-using UnityEngine.AddressableAssets;
-using UnityEngine.InputSystem;
 
 namespace UltraAchievementsRevamped.Core;
 
