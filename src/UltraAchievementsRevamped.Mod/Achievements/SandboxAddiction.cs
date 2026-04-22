@@ -1,6 +1,7 @@
 using System.Collections;
 using HarmonyLib;
 using UnityEngine;
+using UltraAchievementsRevamped.Core.Achievements;
 
 namespace UltraAchievementsRevamped.Mod.Achievements;
 
@@ -22,7 +23,7 @@ internal class SandboxAddiction : MonoBehaviour
         while (true)
         {
             float sandboxHours = SteamController.Instance.GetSandboxStats().hoursSpend;
-            if (sandboxHours > 5) Core.Achievements.AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.sandboxAddiction");
+            if (sandboxHours > 5) AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.sandboxAddiction");
             yield return wait;
         }
     }

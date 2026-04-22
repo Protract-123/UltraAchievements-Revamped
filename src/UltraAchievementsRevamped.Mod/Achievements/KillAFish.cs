@@ -1,5 +1,6 @@
 using HarmonyLib;
 using UnityEngine;
+using UltraAchievementsRevamped.Core.Achievements;
 
 namespace UltraAchievementsRevamped.Mod.Achievements;
 
@@ -11,6 +12,6 @@ internal class KillAFish : MonoBehaviour
     private static void FishDeathPatch(Breakable __instance)
     {
         if (__instance.gameObject.TryGetComponent<FishGhost>(out _))
-            Core.Achievements.AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.killAFish");
+            AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.killAFish");
     }
 }

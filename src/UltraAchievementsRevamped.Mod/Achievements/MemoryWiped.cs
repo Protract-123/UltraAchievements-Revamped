@@ -1,4 +1,5 @@
 using HarmonyLib;
+using UltraAchievementsRevamped.Core.Achievements;
 
 namespace UltraAchievementsRevamped.Mod.Achievements;
 
@@ -8,6 +9,6 @@ internal class MemoryWiped
     [HarmonyPatch(typeof(SaveSlotMenu), "ConfirmWipe")]
     [HarmonyPostfix]
     private static void DeleteSavePatch() =>
-        Core.Achievements.AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.memoryWiped");
+        AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.memoryWiped");
     
 }
