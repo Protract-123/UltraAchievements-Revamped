@@ -129,6 +129,11 @@ public class AchievementPanel : MonoBehaviour
     private static void AchievementPanelPatch(ShopZone __instance)
     {
         GameObject mainPanel = __instance.transform.Find("Canvas/Background/Main Panel").gameObject;
+        
+        // Check for if this is a standard yellow terminal
+        if (__instance.name != "Shop") return; 
+        if (mainPanel == null) return;
+        
         AchievementPanel achievementPanel = Instantiate(Assets.AchievementPanelPrefab, mainPanel.transform);
 
         GameObject terminalIcon = __instance.transform.Find("Canvas/Background/Icon").gameObject;
