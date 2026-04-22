@@ -9,7 +9,7 @@ internal class DiscoParty
 {
     [HarmonyPatch(typeof(ItemPlaceZone), "CheckItem")]
     [HarmonyPostfix]
-    internal static void SoapPlacedPatch(ItemPlaceZone __instance)
+    private static void SoapPlacedPatch(ItemPlaceZone __instance)
     {
         if (StatsManager.Instance?.levelNumber != 18) return;
         if (__instance.acceptedItemType != ItemType.Soap) return;

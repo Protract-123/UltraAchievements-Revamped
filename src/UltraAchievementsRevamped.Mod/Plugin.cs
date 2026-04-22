@@ -6,7 +6,7 @@ namespace UltraAchievementsRevamped.Mod;
 
 [BepInPlugin(PluginInfo.Guid, PluginInfo.Name, PluginInfo.Version)]
 [BepInDependency(Core.Plugin.PluginInfo.Guid, Core.Plugin.PluginInfo.Version)]
-public class Plugin : BaseUnityPlugin
+internal class Plugin : BaseUnityPlugin
 {
     private static class PluginInfo
     {
