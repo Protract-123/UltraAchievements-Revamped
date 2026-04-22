@@ -5,11 +5,11 @@ using UnityEngine;
 namespace UltraAchievementsRevamped.Mod.Achievements;
 
 [HarmonyPatch]
-public class SandboxAddiction : MonoBehaviour
+internal class SandboxAddiction : MonoBehaviour
 {
     [HarmonyPatch(typeof(ShopZone), "Start")]
     [HarmonyPostfix]
-    private static void AchievementPanelPatch(ShopZone __instance)
+    private static void TerminalSpawnPatch(ShopZone __instance)
     {
         if (__instance.name != "Sandbox Shop") return;
         __instance.gameObject.AddComponent<SandboxAddiction>();

@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1481099388, guid: 32183c11afec0684ea6a2ac85e45f89a, type: 3}
-  m_Name: Sandbox Addiction
+  m_Name: Memory Wiped
   m_EditorClassIdentifier: 
-  id: ultraAchievementsRevamped.sandboxAddiction
+  id: ultraAchievementsRevamped.memoryWiped
   sourceMod: UltraAchievements
   icon: {fileID: 21300000, guid: 57591de8d093af544a381b4d94756923, type: 3}
-  displayName: Sandbox Addiction
-  description: ...You do know there is a full game for this type of thing right?
-    No need to spend that much time in the sandbox
+  displayName: Memory Wiped
+  description: Perhaps it was all a dream... or maybe a bit of data corruption
   isHidden: 0

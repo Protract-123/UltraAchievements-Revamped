@@ -126,7 +126,7 @@ public class AchievementPanel : MonoBehaviour
 
     [HarmonyPatch(typeof(ShopZone), "Start")]
     [HarmonyPostfix]
-    private static void AchievementPanelPatch(ShopZone __instance)
+    private static void TerminalSpawnPatch(ShopZone __instance)
     {
         // Check for if this is a standard yellow terminal
         if (__instance.name != "Shop") return; 
