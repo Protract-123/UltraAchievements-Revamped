@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1481099388, guid: 32183c11afec0684ea6a2ac85e45f89a, type: 3}
+  m_Name: Cult of Jakito
+  m_EditorClassIdentifier: 
+  id: ultraAchievementsRevamped.cultOfJakito
+  sourceMod: UltraAchievements
+  icon: {fileID: 21300000, guid: 57591de8d093af544a381b4d94756923, type: 3}
+  displayName: Cult of Jakito
+  description: You just joined a cult of fools who cause chaos by offering a sacrifice
+    to a diety, congratulations and goodbye
+  isHidden: 0

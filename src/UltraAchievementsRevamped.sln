@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltraAchievementsRevamped.Core", "UltraAchievementsRevamped.Core\UltraAchievementsRevamped.Core.csproj", "{85C96785-0CEA-419E-AA0F-5DD5D1B206DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltraAchievementsRevamped.Mod", "UltraAchievementsRevamped.Mod\UltraAchievementsRevamped.Mod.csproj", "{C9C06B42-662A-4A22-80C3-C7E6278A5A62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85C96785-0CEA-419E-AA0F-5DD5D1B206DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85C96785-0CEA-419E-AA0F-5DD5D1B206DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85C96785-0CEA-419E-AA0F-5DD5D1B206DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85C96785-0CEA-419E-AA0F-5DD5D1B206DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9C06B42-662A-4A22-80C3-C7E6278A5A62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9C06B42-662A-4A22-80C3-C7E6278A5A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9C06B42-662A-4A22-80C3-C7E6278A5A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9C06B42-662A-4A22-80C3-C7E6278A5A62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

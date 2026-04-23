@@ -1,0 +1,13 @@
+<!-- Taken from https://github.com/averyocean65/UltraPortal/blob/master/Directory.Build.props -->
+<Project>
+
+    <Import Condition="Exists('ULTRAKILLPATH.user')" Project="ULTRAKILLPATH.user"/>
+    
+    <PropertyGroup Condition="$(ULTRAKILLPath) == ''">
+        <ULTRAKILLPath>C:/Program Files (x86)/Steam/steamapps/common/ULTRAKILL/</ULTRAKILLPath>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <ManagedDir>$(ULTRAKILLPath)/ULTRAKILL_Data/Managed/</ManagedDir>
+    </PropertyGroup>
+</Project>
