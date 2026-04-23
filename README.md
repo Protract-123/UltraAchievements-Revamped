@@ -14,6 +14,8 @@ UltraAchievements-Revamped is both a mod and library for the hit indie game ULTR
 
 - The settings menu currently doesn't work. It'll probably have settings for the Achievement PopUp in a future version.
 
+- Achievements currently don't have icons. This is a WIP which will be done in a later version
+
 ## Installation
 
 ![UltraAchievements-Revamped Core on Thunderstore](.github/thunderstore_library.png)
