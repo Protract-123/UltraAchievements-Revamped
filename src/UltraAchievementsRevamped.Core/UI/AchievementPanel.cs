@@ -109,17 +109,17 @@ public class AchievementPanel : MonoBehaviour
             if (i >= totalPages)
             {
                 pageButtons[i].interactable = false;
-                pageButtons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+                pageButtons[i].GetComponent<Image>().color = Color.white;
             }
             else if (i == pageIndex)
             {
                 pageButtons[i].interactable = true;
-                pageButtons[i].GetComponent<Image>().color = new Color(1f, 0, 0, 1f);
+                pageButtons[i].GetComponent<Image>().color = Color.red;
             }
             else
             {
                 pageButtons[i].interactable = true;
-                pageButtons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+                pageButtons[i].GetComponent<Image>().color = Color.white;
             }
         }
     }
@@ -128,11 +128,10 @@ public class AchievementPanel : MonoBehaviour
     [HarmonyPostfix]
     private static void TerminalSpawnPatch(ShopZone __instance)
     {
-        // Check for if this is a standard yellow terminal
-        if (__instance.name != "Shop") return; 
-        
+        if (__instance.name != "Shop") return;
+
         GameObject mainPanel = __instance.transform.Find("Canvas/Background/Main Panel").gameObject;
-        
+
         AchievementPanel achievementPanel = Instantiate(Assets.AchievementPanelPrefab, mainPanel.transform);
 
         GameObject terminalIcon = __instance.transform.Find("Canvas/Background/Icon").gameObject;
@@ -143,6 +142,5 @@ public class AchievementPanel : MonoBehaviour
         achievementPanelButton.toActivate = [achievementPanel.gameObject];
         achievementPanelButton.toDeactivate = [];
         achievementPanelButton.clickSound = achievementPanel.backButton.clickSound;
-
     }
 }

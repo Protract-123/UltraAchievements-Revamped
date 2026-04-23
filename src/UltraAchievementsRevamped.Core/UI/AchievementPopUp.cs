@@ -23,7 +23,7 @@ public class AchievementPopUp : MonoBehaviour
 
     private void Start()
     {
-        NewMovement.Instance?.GetComponent<AudioSource>().PlayOneShot(achievementSound);
+        NewMovement.Instance?.GetComponent<AudioSource>()?.PlayOneShot(achievementSound);
         StartCoroutine(WaitAndDestroy());
     }
 
@@ -38,7 +38,7 @@ public class AchievementPopUp : MonoBehaviour
 
     internal static void CreateInstance(AchievementInfo achievementInfo, Transform parent)
     {
-        AchievementPopUp instance = Instantiate(Assets.AchievementPopUpPrefab, parent).GetComponent<AchievementPopUp>();
+        AchievementPopUp instance = Instantiate(Assets.AchievementPopUpPrefab, parent);
 
         instance.titleText.text = achievementInfo.DisplayName;
         instance.descriptionText.text = achievementInfo.Description;

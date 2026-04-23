@@ -17,13 +17,19 @@ internal class SandboxAddiction : MonoBehaviour
     }
 
     private void Start() => StartCoroutine(SandboxTimeCheck());
-    
-    private static IEnumerator SandboxTimeCheck() {
-        WaitForSeconds wait = new(60f); 
+
+    private static IEnumerator SandboxTimeCheck()
+    {
+        WaitForSeconds wait = new(60f);
         while (true)
         {
-            float sandboxHours = SteamController.Instance.GetSandboxStats().hoursSpend;
-            if (sandboxHours > 5) AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.sandboxAddiction");
+            float sandboxHours = SteamController.Instance?.GetSandboxStats().hoursSpend ?? 0f;
+            if (sandboxHours > 5)
+            {
+                AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.sandboxAddiction");
+                yield break;
+            }
+
             yield return wait;
         }
     }

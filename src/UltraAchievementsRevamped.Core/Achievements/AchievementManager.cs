@@ -106,7 +106,8 @@ public static class AchievementManager
 
             SaveAchievementProgress();
         }
-        else Plugin.Logger.LogError($"Achievement {id} is not a progressive achievement");
+        else
+            Plugin.Logger.LogError($"Achievement {id} is not a progressive achievement");
     }
 
     public static void AddProgressToAchievement(AchievementInfo achievementInfo, int amount)
@@ -128,7 +129,8 @@ public static class AchievementManager
 
             SaveAchievementProgress();
         }
-        else Plugin.Logger.LogError($"Achievement {achievementInfo.Id} is not a progressive achievement");
+        else
+            Plugin.Logger.LogError($"Achievement {achievementInfo.Id} is not a progressive achievement");
     }
 
     private static void RegisterInfo(AchievementInfo info)
@@ -160,21 +162,28 @@ public static class AchievementManager
 
     private static void SaveAchievementProgress()
     {
-        using BinaryWriter saveWriter = new(File.Open(SavePath, FileMode.Create));
-        saveWriter.Write(SaveFormatVersion);
-        saveWriter.Write(IdToAchInfo.Count);
-
-        foreach ((string id, AchievementInfo info) in IdToAchInfo)
+        try
         {
-            saveWriter.Write(id);
-            saveWriter.Write(info.IsComplete);
-            saveWriter.Write(info is ProgressiveAchievementInfo);
+            using BinaryWriter saveWriter = new(File.Open(SavePath, FileMode.Create));
+            saveWriter.Write(SaveFormatVersion);
+            saveWriter.Write(IdToAchInfo.Count);
 
-            if (info is ProgressiveAchievementInfo progressive)
-                saveWriter.Write(progressive.CurrentProgress);
+            foreach ((string id, AchievementInfo info) in IdToAchInfo)
+            {
+                saveWriter.Write(id);
+                saveWriter.Write(info.IsComplete);
+                saveWriter.Write(info is ProgressiveAchievementInfo);
+
+                if (info is ProgressiveAchievementInfo progressive)
+                    saveWriter.Write(progressive.CurrentProgress);
+            }
+
+            Plugin.Logger.LogInfo($"Achievements saved at {Time.time}");
         }
-
-        Plugin.Logger.LogInfo($"Achievements saved at {Time.time}");
+        catch (Exception e)
+        {
+            Plugin.Logger.LogError($"Achievements could not be saved to {SavePath}: {e.Message}");
+        }
     }
 
     private static Dictionary<string, (bool isComplete, int? progress)> LoadAchievementProgress()

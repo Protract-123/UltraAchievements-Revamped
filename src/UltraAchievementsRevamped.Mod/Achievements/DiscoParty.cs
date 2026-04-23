@@ -14,9 +14,9 @@ internal class DiscoParty
         if (StatsManager.Instance?.levelNumber != 18) return;
         if (__instance.acceptedItemType != ItemType.Soap) return;
 
-        if (__instance.gameObject.GetComponentInChildren<ItemIdentifier>() == null) return;
-        if (__instance.gameObject.GetComponentInChildren<ItemIdentifier>().itemType != ItemType.Soap) return;
-        
+        ItemIdentifier item = __instance.gameObject.GetComponentInChildren<ItemIdentifier>();
+        if (item == null || item.itemType != ItemType.Soap) return;
+
         foreach (GameObject obj in __instance.activateOnSuccess)
         {
             if (!obj.name.Contains("Rainbow")) continue;

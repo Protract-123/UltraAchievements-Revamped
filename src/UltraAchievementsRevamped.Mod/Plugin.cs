@@ -21,11 +21,10 @@ internal class Plugin : BaseUnityPlugin
     {
         Logger = base.Logger;
         Logger.LogInfo($"{PluginInfo.Name} {PluginInfo.Version} has loaded!");
-        
+
         Harmony harmony = new(Core.Plugin.PluginInfo.Guid);
         harmony.PatchAll();
 
-        
         Assets.LoadAssets();
     }
 }

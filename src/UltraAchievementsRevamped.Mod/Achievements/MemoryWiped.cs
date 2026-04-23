@@ -10,5 +10,4 @@ internal class MemoryWiped
     [HarmonyPostfix]
     private static void DeleteSavePatch() =>
         AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.memoryWiped");
-    
 }

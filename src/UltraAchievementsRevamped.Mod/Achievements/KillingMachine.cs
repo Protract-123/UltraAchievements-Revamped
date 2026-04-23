@@ -8,12 +8,15 @@ internal class KillingMachine
 {
     [HarmonyPatch(typeof(FinalRank), "LevelChange")]
     [HarmonyPrefix]
-    private static void RankTimeCheckPostfix(FinalRank __instance)
+    private static void RankTimeCheckPrefix(FinalRank __instance)
     {
         string[] parts = __instance.time.text.Split(':');
-        float seconds = int.Parse(parts[0]) * 60 + float.Parse(parts[1]);
+        if (parts.Length < 2) return;
+        if (!int.TryParse(parts[0], out int minutes) || !int.TryParse(parts[1], out int secs)) return;
+
+        float seconds = minutes * 60 + secs;
         bool perfectRank = __instance.totalRank.text.Contains(">P<");
-        
+
         if (perfectRank && seconds <= 60)
             AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.killingMachine");
     }

@@ -46,8 +46,6 @@ internal class SequenceBreak
         }
     }
 
-    private static bool HasWeapon(string name)
-    {
-        return (GunControl.Instance?.allWeapons!).Any(weapon => weapon.name.Contains(name));
-    }
+    private static bool HasWeapon(string name) =>
+        (GunControl.Instance?.allWeapons ?? []).Any(weapon => weapon.name.Contains(name));
 }

@@ -18,14 +18,14 @@ internal static class Assets
     internal static void LoadAssets()
     {
         Addressables.LoadContentCatalogAsync(CatalogPath, true).WaitForCompletion();
-        
-        List<AchievementInfo> achievementInfos = []; 
-        Addressables.LoadAssetsAsync<AchievementInfo>("UltraAchievementsMod",(asset) => 
+
+        List<AchievementInfo> achievementInfos = [];
+        Addressables.LoadAssetsAsync<AchievementInfo>("UltraAchievementsMod", (asset) =>
         {
             Debug.Log($"Loaded Achievement: {asset.Id}");
             achievementInfos.Add(asset);
         }).WaitForCompletion();
-        
+
         AchievementManager.RegisterAchievementInfos(achievementInfos);
     }
 }
