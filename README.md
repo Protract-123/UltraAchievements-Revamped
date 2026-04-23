@@ -23,7 +23,7 @@ Both the Mod and Core can be installed the same way. Choose whichever method wor
 
 1. **Thunderstore (Recommended)** - Install via the release published on [Thunderstore](https://thunderstore.io/c/ultrakill/) using a mod manager like [r2ModMan](https://github.com/ebkr/r2modmanPlus). This will automatically detect your ULTRAKILL install and handle all setup for you.
 
-2. **Manual** - Download the latest release from [GitHub Releases](https://github.com/Protract-123/UltraAchievements-Revamped/releases), set up [BepInEx](https://github.com/BepInEx/BepInEx) manually for ULTRAKILL, then move release files into the BepInEx plugins folder.
+2. **Manual** - Download the latest release from [GitHub Releases](https://github.com/Protract-123/UltraAchievements-Revamped/releases), set up [BepInEx](https://github.com/BepInEx/BepInEx) manually for ULTRAKILL, then move release files into a subfolder in the BepInEx plugins folder.
 
 3. **Build from source** - See [Building from Source](#building-from-source) below.
 
