@@ -4,7 +4,7 @@
 
 UltraAchievements-Revamped is both a mod and library for the hit indie game ULTRAKILL. The **Core** (library) provides utilities for mod developers to create their own achievements. The **Mod** uses the library to add 15 achievements that are interesting compared to basic progression achievements (of which there are none in this mod).
 
-> **Trailer coming Soon™**
+> **Trailer:** <https://youtu.be/Rlao2NaAiWk>
 
 ## Limitations
 
@@ -14,7 +14,7 @@ UltraAchievements-Revamped is both a mod and library for the hit indie game ULTR
 
 - The settings menu currently doesn't work. It'll probably have settings for the Achievement PopUp in a future version.
 
-- Achievements currently don't have icons. This is a WIP which will be done in a later version
+- Achievements currently don't have icons. This is a WIP which will be done in a later version.
 
 ## Installation
 
@@ -23,7 +23,7 @@ UltraAchievements-Revamped is both a mod and library for the hit indie game ULTR
 
 Both the Mod and Core can be installed the same way. Choose whichever method works best for you:
 
-1. **Thunderstore (Recommended)** - Install via the release published on [Thunderstore](https://thunderstore.io/c/ultrakill/) using a mod manager like [r2ModMan](https://github.com/ebkr/r2modmanPlus). This will automatically detect your ULTRAKILL install and handle all setup for you.
+1. **Thunderstore (Recommended)** - Install via the release published on [Thunderstore](https://thunderstore.io/c/ultrakill/) using a mod manager like [r2ModMan](https://github.com/ebkr/r2modmanPlus). This will automatically detect your ULTRAKILL install and handle all setup for you. Here are the [Mod](https://thunderstore.io/c/ultrakill/p/Protract/UltraAchievements_Revamped/) and [Core](https://thunderstore.io/c/ultrakill/p/Protract/UltraAchievements_Library/) Thunderstore links
 
 2. **Manual** - Download the latest release from [GitHub Releases](https://github.com/Protract-123/UltraAchievements-Revamped/releases), set up [BepInEx](https://github.com/BepInEx/BepInEx) manually for ULTRAKILL, then move release files into a subfolder in the BepInEx plugins folder.
 
@@ -39,7 +39,7 @@ Achievements can be created in two ways, as a Unity ScriptableObject or entirely
 
 #### Create an AchievementInfo
 
-Call `AchievementInfo.Create<AchievementInfo>()` or `ProgressiveAchievementInfo.Create()` to create a new `AchievementInfo` or `ProgressiveAchievementInfo` instance.
+Call `AchievementInfo.Create<AchievementInfo>()` or `ProgressiveAchievementInfo.Create()` to create a new `AchievementInfo` or `ProgressiveAchievementInfo` instance. The `sourceMod` parameter should be a human-readable name for your mod, as it's used to group your achievements together in the Shop UI.
 
 #### Register the achievement
 
@@ -59,10 +59,12 @@ A complete sample `Plugin.cs` file based on the [ULTRAKILL Template Project](htt
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using UltraAchievementsRevamped.Core.Achievements;
 
 namespace TemplateMod;
 
 [BepInPlugin(PluginInfo.Guid, PluginInfo.Name, PluginInfo.Version)]
+[BepInDependency("protract.ultrakill.ultra_achievements_core")]
 [HarmonyPatch]
 public class Plugin : BaseUnityPlugin
 {
@@ -81,9 +83,9 @@ public class Plugin : BaseUnityPlugin
         new Harmony(PluginInfo.Guid).PatchAll();
         Logger.LogInfo($"{PluginInfo.Name} v{PluginInfo.Version} has been loaded.");
 
-        achInfo = AchievementInfo.Create<AchievementInfo>(id, sourceMod, icon, displayName, description, isHidden);
+        var achInfo = AchievementInfo.Create<AchievementInfo>(id, sourceMod, icon, displayName, description, isHidden);
 
-        progressiveAchInfo = ProgressiveAchievementInfo.Create(id, sourceMod, icon, displayName, description, isHidden, maxProgress)
+        var progressiveAchInfo = ProgressiveAchievementInfo.Create(id, sourceMod, icon, displayName, description, isHidden, maxProgress);
 
         AchievementManager.RegisterAchievementInfos([achInfo, progressiveAchInfo]);
     }
@@ -116,7 +118,15 @@ cd ./UltraAchievements-Revamped/src
 dotnet build -c Release
 ```
 
-If your ULTRAKILL install is at the default Steam path (`C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL`), the build will work without any additional changes. If your install is elsewhere, edit `ULTRAKILLPath` in `Directory.Build.props` to point to the correct path before building.
+If your ULTRAKILL install is at the default Steam path (`C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL`), the build will work without any additional changes. If your install is elsewhere, create a file named `ULTRAKILLPATH.user` in `src/` with the following contents, replacing the path as needed.
+
+```xml
+<Project>
+    <PropertyGroup>
+        <ULTRAKILLPath>C:/your/path/to/ULTRAKILL/</ULTRAKILLPath>
+    </PropertyGroup>
+</Project>
+```
 
 The built DLLs will be located at:
 
