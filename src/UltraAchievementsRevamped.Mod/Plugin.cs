@@ -12,7 +12,7 @@ internal class Plugin : BaseUnityPlugin
     {
         public const string Name = "UltraAchievementsRevamped.Mod";
         public const string Guid = "protract.ultrakill.ultra_achievements_revamped";
-        public const string Version = "2.0.0";
+        public const string Version = "2.0.1";
     }
 
     internal new static ManualLogSource Logger;
