@@ -11,6 +11,6 @@ internal class V2IntroKill
     private static void V2DeathPatch(V2 __instance)
     {
         if (__instance.inIntro)
-            AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.discoParty");
+            AchievementManager.MarkAchievementComplete("ultraAchievementsRevamped.v2IntroKill");
     }
 }
